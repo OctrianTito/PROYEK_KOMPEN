@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Flowchartlogin {
     public static void main(String[] args) {
-        String correctusername = "useradmin", correctpass = "adminpass", username, pass ;
+        String correctusername = "admin", correctpass = "adminpass", username, pass ;
 
    
         Scanner sc = new Scanner(System.in);
@@ -11,14 +11,11 @@ public class Flowchartlogin {
     System.out.print(" Masukkan pass : ");
         pass = sc.nextLine();
 
-    if (username.equals(correctusername) && pass.equals(correctusername)){
+    if (username.equals(correctusername) && pass.equals(correctpass)){
         System.out.print("Anda berhasil login");
      } else { 
         System.out.print("Anda gagal login");
      }
-
-    
-    
-       
+  
     }
 }
