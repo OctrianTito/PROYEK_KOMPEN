@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class tamahpoint{
+public class tambahpoint{
     public static void main(String[] args) {
         int point;
         boolean doPelanggaran = true;
