@@ -11,7 +11,7 @@ public class tambahpoint{
 
     System.out.print("Masukkan point anda\t\t\t: ");
     point = input.nextInt();
-    System.out.print("Apakah anda melakukan pelanggaran (Y/n)\t: ");
+    System.out.print("Apakah anda melakukan pelanggaran (y/n)\t: ");
     doPelanggaran = input.next().charAt(0);
     
     // Proses pemilihan
