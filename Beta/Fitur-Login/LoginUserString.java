@@ -10,12 +10,11 @@ public class LoginUserString {
         int jmlPercobaan = 0;
         Scanner sc = new Scanner(System.in);
         
+        // Proses perulangan
         do {
-            
             jmlPercobaan++;
             System.out.print("Masukkan Username : ");
             usernameInput = sc.nextLine();
-            // sc.nextLine();
             System.out.print("Masukkan Password : ");
             passInput = sc.nextLine();
             
