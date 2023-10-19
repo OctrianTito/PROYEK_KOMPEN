@@ -14,6 +14,7 @@ public class tambahpoint{
     System.out.print("Apakah anda melakukan pelanggaran (y/n)\t: ");
     doPelanggaran = input.next().charAt(0);
     
+    // sistem pelanggaran
     // Proses pemilihan
     switch (doPelanggaran){
         case 'y':

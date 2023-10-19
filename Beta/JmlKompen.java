@@ -1,3 +1,5 @@
+// Jumlah Kompen
+
 import java.util.Scanner;
 public class JmlKompen {
     public static void main(String[] args) {
