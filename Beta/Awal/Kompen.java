@@ -1,9 +1,9 @@
 import java.util.Scanner;
 public class Kompen {
     public static void main(String[] args) {
-        // Data Mahasiswa
-        // Deklarasi variabel
         Scanner sc = new Scanner(System.in);
+
+        // Deklarasi variabel
         String namaMahasiswa;
         long nim;
         byte semesterYangDilewati;

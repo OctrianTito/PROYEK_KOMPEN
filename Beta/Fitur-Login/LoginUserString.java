@@ -1,5 +1,3 @@
-// Login User
-
 import java.util.Scanner;
 
 public class LoginUserString {
