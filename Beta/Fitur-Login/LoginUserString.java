@@ -33,14 +33,14 @@ public class LoginUserString {
             }
             //batas maksimum percobaan login
             if (jmlPercobaan >= 3) {
-                System.out.print("Anda telah mencapai batasan login, silahkan coba lagi nanti");
+                System.out.print("Anda telah mencapai batasan login, silahkan coba lagi nanti\n");
                 break;
             }
-            System.out.print("Apakah anda mau coba login lagi? (y/n)");
+            System.out.print("Apakah anda mau coba login lagi? (y/n) : ");
             relog = sc.nextLine().charAt(0);
             
         } while (relog == 'y' || relog == 'Y');
-        System.out.println("Terima kasih atas kunjungan anda");
+        
         
         sc.close();
     }
