@@ -31,11 +31,16 @@ public class LoginUserString {
             } else {
                 System.out.println("Username atau password tidak terdaftar");
             }
+            //batas maksimum percobaan login
+            if (jmlPercobaan >= 3) {
+                System.out.print("Anda telah mencapai batasan login, silahkan coba lagi nanti");
+                break;
+            }
             System.out.print("Apakah anda mau coba login lagi? (y/n)");
             relog = sc.nextLine().charAt(0);
             
         } while (relog == 'y' || relog == 'Y');
-        System.out.println("jumlah percobaan login: " + jmlPercobaan);
+        System.out.println("Terima kasih atas kunjungan anda");
         
         sc.close();
     }
