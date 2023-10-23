@@ -33,5 +33,7 @@ public class Kompen {
         // Proyek
         jumlahKompen = jumlahAlpha * 2 * semesterYangDilewati;
         System.out.println("Jumlah Kompen = " + jumlahKompen);
+
+        sc.close();
     }
 }

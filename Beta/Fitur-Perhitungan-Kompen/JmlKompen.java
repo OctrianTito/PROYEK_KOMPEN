@@ -1,7 +1,7 @@
 import java.util.Scanner;
 public class JmlKompen {
     public static void main(String[] args) {
-        int alpha, semester, totAlpha1, totAlphaKompen = 0, jmlYangDikerjakan, totPerhitungan;
+        int alpha, semester, totAlpha1, totAlphaKompen = 0, jmlYangDikerjakan;
         String konfirmasi;
         Scanner sc = new Scanner(System.in);
 
@@ -53,5 +53,6 @@ public class JmlKompen {
         }
 
         while (totAlphaKompen > 0);
+        sc.close();
     }
 }

@@ -18,11 +18,10 @@ public class ListKompen {
             jenisKompen2 = sc.nextLine();
 
         } 
-
-        
+            
             System.out.println("List kompen: ");
             System.out.println(jenisKompen1);
             System.out.println(jenisKompen2);
-            
+        sc.close();    
     }
 }

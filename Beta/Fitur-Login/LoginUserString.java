@@ -7,10 +7,11 @@ public class LoginUserString {
         usernameAdmin = "Admin", usernameDosen = "Dosen", usernameMhs = "Mahasiswa",
         passAdmin = "Admin245", passDosen = "Dosen876", passMhs = "Mahasiswa213";
         char relog;
-        int jmlPercobaan = 0;
+        
         Scanner sc = new Scanner(System.in);
         
         // Proses perulangan
+        int jmlPercobaan = 0;
         do {
             jmlPercobaan++;
             System.out.print("Masukkan Username : ");
