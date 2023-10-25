@@ -5,11 +5,11 @@ public class ListKompen {
     public static void main(String[] args) {
         String jeniskompen [] = new String [12]; 
         String konfirmasi;
-        int i;
+       
 
         Scanner sc = new Scanner(System.in);
         //input jenis pekerjaan kompen 
-        for ( i = 0; i < jeniskompen.length; i++) {
+        for ( int i = 0; i < jeniskompen.length; i++) {
         System.out.print("Masukkan jenis pekerjaan kompen yang ingin anda berikan : ");
         jeniskompen[i] = sc.nextLine();
         //proses pemilihan ingin menambahkan kompen
