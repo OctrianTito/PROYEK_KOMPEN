@@ -3,11 +3,13 @@ import java.util.Scanner;
 public class ListKompen {
 
     public static void main(String[] args) {
+        
+        // deklarasi variabel
         String jeniskompen[] = new String[12];
         String konfirmasi;
-
         Scanner sc = new Scanner(System.in);
 
+        // input nilai
         for (int i = 0; i < jeniskompen.length; i++) {
             System.out.print("Masukkan jenis pekerjaan kompen yang ingin anda berikan : ");
             jeniskompen[i] = sc.nextLine();
@@ -20,6 +22,7 @@ public class ListKompen {
             }
         }
 
+        // output nilai
         System.out.println("List kompen yang ditambahkan : ");
         for (int j = 0; j < jeniskompen.length; j++) {
             if (jeniskompen[j] != null) {
