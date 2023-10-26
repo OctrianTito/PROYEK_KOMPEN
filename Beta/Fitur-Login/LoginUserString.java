@@ -6,7 +6,7 @@ public class LoginUserString {
         String usernameInput, passInput,
         usernameAdmin = "Admin", usernameDosen = "Dosen", usernameMhs = "Mahasiswa",
         passAdmin = "Admin245", passDosen = "Dosen876", passMhs = "Mahasiswa213";
-        char relog;
+        String relog;
         
         Scanner sc = new Scanner(System.in);
         
@@ -38,9 +38,9 @@ public class LoginUserString {
                 break;
             }
             System.out.print("Apakah anda mau coba login lagi? (y/n) : ");
-            relog = sc.nextLine().charAt(0);
+            relog = sc.nextLine();
             
-        } while (relog == 'y' || relog == 'Y');
+        } while (relog.equalsIgnoreCase("y"));
         
         
         sc.close();
