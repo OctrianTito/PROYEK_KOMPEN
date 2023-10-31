@@ -38,6 +38,6 @@ public class tambahpoint{
         System.out.print("point anda tetap");
     }
     */
-
+    input.close();
     }
 }
