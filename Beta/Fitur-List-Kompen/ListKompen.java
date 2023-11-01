@@ -3,33 +3,28 @@ import java.util.Scanner;
 public class ListKompen {
 
     public static void main(String[] args) {
-        
-        // deklarasi variabel
-        String jeniskompen[] = new String[12];
-        String konfirmasi;
+
         Scanner sc = new Scanner(System.in);
+        String[][] list = new String[6][3];
+        String hari[] = { "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu" };
 
-        // input nilai
-        for (int i = 0; i < jeniskompen.length; i++) {
-            System.out.print("Masukkan jenis pekerjaan kompen yang ingin anda berikan : ");
-            jeniskompen[i] = sc.nextLine();
-
-            System.out.print("Apakah anda ingin menambahkan pekerjaan kompen lagi ? (y/n) : ");
-            konfirmasi = sc.nextLine();
-
-            if (!konfirmasi.equals("y")) {
-                break;
-            }
+        for (int i = 0; i < list.length; i++) {
+            System.out.println("Daftar list hari " + hari[i]);
+            System.out.print("Masukkan list pekerjaan ke-1 : ");
+            list[i][0] = sc.nextLine();
+            System.out.print("Masukkan list pekerjaan ke-2 : ");
+            list[i][1] = sc.nextLine();
+            System.out.print("Masukkan list pekerjaan ke-3 : ");
+            list[i][2] = sc.nextLine();
         }
+        System.out.println("Daftar perkerjaan :");
+        for (int i = 0; i < list.length; i++) {
+            System.out.println("Hari " + hari[i] + ":");
+            System.out.println("Jenis pekerjaan ke-1 : " + list[i][0]);
+            System.out.println("Jenis pekerjaan ke-2 : " + list[i][1]);
+            System.out.println("Jenis pekerjaan ke-3 : " + list[i][2]);
 
-        // output nilai
-        System.out.println("List kompen yang ditambahkan : ");
-        for (int j = 0; j < jeniskompen.length; j++) {
-            if (jeniskompen[j] != null) {
-                System.out.println("-" + (j + 1) + " jenis pekerjaan : " + jeniskompen[j]);
-            }
+            sc.close();
         }
-
-        sc.close();
     }
 }
