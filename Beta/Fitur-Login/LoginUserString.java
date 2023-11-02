@@ -6,7 +6,7 @@ public class LoginUserString {
         String usernameInput, passInput,
         usernameAdmin = "Admin", usernameDosen = "Dosen", usernameMhs = "Mahasiswa",
         passAdmin = "Admin245", passDosen = "Dosen876", passMhs = "Mahasiswa213";
-        String relog;
+        String relog = "ya";
         
         Scanner sc = new Scanner(System.in);
         
@@ -37,10 +37,10 @@ public class LoginUserString {
                 System.out.print("Anda telah mencapai batasan login, silahkan coba lagi nanti\n");
                 break;
             }
-            System.out.print("Apakah anda mau coba login lagi? (y/n) : ");
+            System.out.print("Apakah anda mau coba login lagi? (ya/tidak) : ");
             relog = sc.nextLine();
             
-        } while (relog.equalsIgnoreCase("y"));
+        } while (relog.equalsIgnoreCase("ya"));
         
         
         sc.close();

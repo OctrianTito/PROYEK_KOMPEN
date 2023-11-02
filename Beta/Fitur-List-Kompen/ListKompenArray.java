@@ -15,7 +15,9 @@ public class ListKompenArray {
             list [i][1] = sc.nextLine();
             System.out.print("Masukkan list pekerjaan ke-3 : " );
             list [i][2] = sc.nextLine();
-        }
+
+            }
+        
         System.out.println("Daftar perkerjaan :");
         for (int i = 0; i < list.length; i++) {
             System.out.println("Hari " + hari[i] + ":");
