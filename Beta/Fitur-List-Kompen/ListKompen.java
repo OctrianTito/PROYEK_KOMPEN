@@ -8,21 +8,26 @@ public class ListKompen {
         String[][] list = new String[6][3];
         String hari[] = { "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu" };
 
-        for (int i = 0; i < list.length; i++) {
-            System.out.println("Daftar list hari " + hari[i]);
-            System.out.print("Masukkan list pekerjaan ke-1 : ");
-            list[i][0] = sc.nextLine();
-            System.out.print("Masukkan list pekerjaan ke-2 : ");
-            list[i][1] = sc.nextLine();
-            System.out.print("Masukkan list pekerjaan ke-3 : ");
-            list[i][2] = sc.nextLine();
+        for (int i = 0; i < hari.length; i++) {
+            System.out.println("Tambah pekerjaan di hari " + hari[i]);
+            for (int j = 0, k = 0; j < list[0].length; j++, k++) {
+                System.out.print("Pekerjaan "+(k+1)+" : ");
+                list[i][j] = sc.nextLine();
+            }
+            System.out.println();
+            
         }
+
+        System.out.println("--------------------");       
         System.out.println("Daftar perkerjaan :");
+        System.out.println("--------------------");
+
         for (int i = 0; i < list.length; i++) {
-            System.out.println("Hari " + hari[i] + ":");
-            System.out.println("Jenis pekerjaan ke-1 : " + list[i][0]);
-            System.out.println("Jenis pekerjaan ke-2 : " + list[i][1]);
-            System.out.println("Jenis pekerjaan ke-3 : " + list[i][2]);
+            System.out.println("List pekerjaan hari " + hari[i]);
+            for (int j = 0, k = 0; j < list[0].length; j++, k++) {
+                System.out.println("Pekerjaan ke-"+(k+1)+" : "+list[i][j]);
+            }
+            System.out.println();
 
             sc.close();
         }
