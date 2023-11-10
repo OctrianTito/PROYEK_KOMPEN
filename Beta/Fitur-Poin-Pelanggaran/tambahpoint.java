@@ -27,17 +27,6 @@ public class tambahpoint{
         default:
             break;
     }
-
-    /*
-    
-    Dinonaktifkan untuk cadangan
-    
-    if ( doPelanggaran){
-        System.out.print("Point anda bertambah sebanyak : " +point * 2);
-    }else{
-        System.out.print("point anda tetap");
-    }
-    */
     input.close();
     }
 }
