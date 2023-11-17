@@ -3,9 +3,14 @@ import java.util.Scanner;
 public class LoginUserString {
     public static void main(String[] args) {
         // Deklarasi variabel dan input nilai
-        String usernameInput, passInput,
-        usernameAdmin = "Admin", usernameDosen = "Dosen", usernameMhs = "Mahasiswa",
-        passAdmin = "Admin245", passDosen = "Dosen876", passMhs = "Mahasiswa213";
+        String[][] users = new String[100][2];
+        String[][] userAdmin = new String[3][2];
+        userAdmin[0][0] = "Admin1";
+        userAdmin[0][1] = "Admin45";
+        userAdmin[1][0] = "Admin2";
+        userAdmin[1][1] = "Admin245";
+        userAdmin[2][0] = "Admin3";
+        userAdmin[2][1] = "Admin345";
         String relog = "ya";
         
         Scanner sc = new Scanner(System.in);
@@ -14,35 +19,45 @@ public class LoginUserString {
         int jmlPercobaan = 0;
         do {
             jmlPercobaan++;
+            String usernameInput, passInput;
             System.out.print("Masukkan Username : ");
             usernameInput = sc.nextLine();
             System.out.print("Masukkan Password : ");
             passInput = sc.nextLine();
-            
-            // proses pemilihan user login
-            if (usernameInput.equals(usernameAdmin) && passInput.equals(passAdmin)) {
-                System.out.println("Anda masuk sebagai admin");
-                break;
-            } else if (usernameInput.equals(usernameDosen) && passInput.equals(passDosen)) {
-                System.out.println("Anda masuk sebagai Dosen");
-                break;
-            } else if (usernameInput.equals(usernameMhs) && passInput.equals(passMhs)) {
-                System.out.println("Anda masuk sebagai mahasiswa");
-                break;
-            } else {
-                System.out.println("Username atau password tidak terdaftar");
-            }
-            //batas maksimum percobaan login
-            if (jmlPercobaan >= 3) {
-                System.out.print("Anda telah mencapai batasan login, silahkan coba lagi nanti\n");
-                break;
-            }
-            System.out.print("Apakah anda mau coba login lagi? (ya/tidak) : ");
-            relog = sc.nextLine();
-            
+
+            boolean found = false;
+            int numUsers = 0;
+
+            for (int i = 0; i < numUsers || i < userAdmin.length; i++) {
+                    if (usernameInput.equals(users[i][0]) && passInput.equals(users[i][1])) {
+                        found = true;
+                        System.out.println("\tAnda berhasil login.");
+                        break;
+                    } else if (usernameInput.equals(userAdmin[i][0]) && passInput.equals(userAdmin[i][1])) {
+                        found = true;
+                        System.out.println("================================================");
+                        System.out.println("\tAnda berhasil Login sebagai Admin");
+                        
+                    }
+                }
+                if (jmlPercobaan>3)
+                    System.out.println("percobaan telah melampaui batas");
+                    System.out.println("silahkan coba lagi nanti");
+                if (!found) {
+                        System.out.println("Username atau password tidak terdaftar");
+                        System.out.println("Apakah ingin mencoba kembali : ");
+                        relog = sc.nextLine();
+                     if (jmlPercobaan>3){
+                    System.out.println("percobaan telah melampaui batas");
+                    System.out.println("silahkan coba lagi nanti");
+                    break;
+
+                     }
+                }
+            sc.close();
         } while (relog.equalsIgnoreCase("ya"));
         
         
-        sc.close();
+        
     }
 }

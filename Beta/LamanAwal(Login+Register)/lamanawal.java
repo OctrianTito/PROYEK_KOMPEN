@@ -100,7 +100,7 @@ public class lamanawal {
             if (lagi.equalsIgnoreCase("ya")) {
                 kembali = true; // Keluar dari program jika tidak ingin kembali
             }else{
-                kembali = false; // Keluar dari program jika
+                kembali = false; // Keluar dari program jika ingin kembali
             }
         } while (kembali);
     }
