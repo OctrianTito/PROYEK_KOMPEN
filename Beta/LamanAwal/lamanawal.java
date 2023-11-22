@@ -16,7 +16,7 @@ public class lamanawal {
         for (int i = 0; i < numUsers || i < userAdmin.length; i++) {
             if (usernameInput.equals(users[i][0]) && passInput.equals(users[i][1])) {
                 found = true;
-                System.out.println("\tAnda berhasil login.");
+                System.out.println("\tAnda berhasil login!.");
                 break;
             } else if (usernameInput.equals(userAdmin[i][0]) && passInput.equals(userAdmin[i][1])) {
                 found = true;
