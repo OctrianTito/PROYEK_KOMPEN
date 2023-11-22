@@ -38,22 +38,30 @@ public class lamanawal {
                 System.out.println("------------------------------------------------");
                 System.out.println("================================================");
               
-                do {
+                 boolean registered = false;
+                for (int i = 0; i < numUsers; i++) {
+                    System.out.println(users[i][0]);
+                    if (users[i][0] != null) {
+                        registered = true;
+                        System.out.println("Anda sudah terdaftar.");
+                        break;
+                    }
+                }
+            
+                // Jika belum terdaftar, lakukan registrasi
+                if (!registered) {
                     if (numUsers < users.length) {
                         System.out.print("Masukkan Username: ");
                         users[numUsers][0] = sc.nextLine();
-                        users[numUsers][0] = sc.nextLine();//membersihkan buffer 
                         System.out.print("Masukkan Password: ");
                         users[numUsers][1] = sc.nextLine();
-
+            
                         numUsers++; // Tambahkan jumlah pengguna yang telah diregistrasi
+                        System.out.println("Registrasi berhasil.");
                     } else {
                         System.out.println("Kapasitas pengguna penuh. Tidak dapat menambahkan username.");
-                        break; // Keluar dari loop jika kapasitas penuh
                     }
-                    
-                    
-                } while (numUsers<users.length);
+                }
                 
     }
     static boolean Lanjut(boolean kembali, char plh) {
