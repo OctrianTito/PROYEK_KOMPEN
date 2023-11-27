@@ -241,7 +241,7 @@ public class lamanawal {
 
     // Hapus data mahasiswa
     static void hapusDataMahasiswa(){
-        // wip
+        // work in progress
     }
 
     static boolean Lanjut(boolean kembali, char plh) {
