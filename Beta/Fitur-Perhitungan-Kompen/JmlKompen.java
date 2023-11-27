@@ -1,4 +1,5 @@
 import java.util.Scanner;
+
 public class JmlKompen {
     public static void main(String[] args) {
         int totAlphaKompen = 0;
