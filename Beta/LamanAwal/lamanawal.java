@@ -65,7 +65,6 @@ public class lamanawal {
         if (numUsers < users.length) {
             System.out.print("Masukkan Username: ");
             users[numUsers][0] = sc.next();
-            // users[numUsers][0] = sc.nextLine();//membersihkan buffer
             System.out.print("Masukkan Password: ");
             users[numUsers][1] = sc.next();
 
@@ -245,6 +244,24 @@ public class lamanawal {
         // wip
     }
 
+    static boolean Lanjut(boolean kembali, char plh) {
+        boolean lagi = true;
+        if (plh == '1') {
+            Login(null, null, plh);
+        } else if (plh == '2') {
+            Register(null, plh);
+        } else if (plh != '1'||plh!='2'){
+            System.out.println("Pilihan tidak tersedia");
+            System.out.print("Apakah anda ingin kembali ke laman awal (ya/tidak) : ");
+            String response = sc.nextLine();
+            if (response.equalsIgnoreCase("ya")) {
+                lagi = true;
+            } else {
+                lagi = false;
+            }
+        }
+        return lagi;
+    }   
     public static void main(String[] args) {
 
         String[][] users = new String[100][2];
@@ -281,22 +298,8 @@ public class lamanawal {
                     break;
 
                 default:
-
-                    if (plh == '1' || plh == '2') {
-                        continue;
-                    } else {
-                        System.out.println("Pilihan tidak tersedia");
-                    }
-                    break;
-            }
-            System.out.print("Apakah anda ingin kembali ke laman awal (ya/tidak) : ");
-            String lagi = sc.nextLine();
-            lagi = sc.nextLine();
-            if (lagi.equalsIgnoreCase("ya")) {
-                kembali = true; // Keluar dari program jika tidak ingin kembali
-            } else {
-                kembali = false; // Keluar dari program jika ingin kembali
-            }
+                    Lanjut(kembali, plh);
+            }  
         } while (kembali);
     }
 }

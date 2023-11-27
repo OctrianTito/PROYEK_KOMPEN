@@ -3,7 +3,10 @@ import java.util.Scanner;
 public class ListKompen {
 
     public static void main(String[] args) {
-
+        String list[][] = inputListKompen();
+        outputListKompen(list);
+    }
+    static String[][] inputListKompen() {
         Scanner sc = new Scanner(System.in);
         String[][] list = new String[6][3];
         String hari[] = { "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu" };
@@ -17,6 +20,12 @@ public class ListKompen {
             System.out.println();
             
         }
+        return list;
+    }
+
+    static void outputListKompen(String list[][]) {
+        Scanner sc = new Scanner(System.in);
+        String hari[] = { "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu" };
 
         System.out.println("--------------------");       
         System.out.println("Daftar perkerjaan :");
