@@ -12,9 +12,9 @@ public class LoginUserString {
         userAdmin[2][0] = "Admin3";
         userAdmin[2][1] = "Admin345";
         String relog = "ya";
-        
+
         Scanner sc = new Scanner(System.in);
-        
+
         // Proses perulangan
         int jmlPercobaan = 0;
         do {

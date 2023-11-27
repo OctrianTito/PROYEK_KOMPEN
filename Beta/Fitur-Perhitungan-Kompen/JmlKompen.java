@@ -1,4 +1,5 @@
 import java.util.Scanner;
+
 public class JmlKompen {
     public static void main(String[] args) {
         int alpha, semester, totAlpha1, totAlphaKompen = 0, jmlYangDikerjakan;
@@ -19,7 +20,7 @@ public class JmlKompen {
             } else if (semester == 2) {
                 totAlphaKompen = totAlpha1 * 4;
                 System.out.println("Total Kompen Anda Adalah \t\t: " + totAlphaKompen);
-            } else if (semester == 3 ) {
+            } else if (semester == 3) {
                 totAlphaKompen = totAlpha1 * 8;
                 System.out.println("Total Kompen Anda Adalah \t\t: " + totAlphaKompen);
             } else if (semester > 3) {
@@ -27,8 +28,7 @@ public class JmlKompen {
             } else {
                 System.out.println("invalid");
             }
-            
-            
+
         } else {
             System.out.println("Total Alpha Anda Adalah \t\t: " + totAlphaKompen);
         }

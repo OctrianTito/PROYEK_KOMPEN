@@ -20,8 +20,10 @@ public class Validasi {
                 for (int i = 0; i < Selesai.length; i++) {
                     if (Selesai[i] == null) {
                         Selesai[i] = nama;
-                        System.out.println("Berhasil menambahkan mahasiswa");
+                        System.out.println("Berhasil menDambahkan mahasiswa");
                         break;
+                    } else {
+                        System.out.println("Terjadi kesalahan");
                     }
                 }
             } else {
@@ -30,6 +32,8 @@ public class Validasi {
                         BlmSelesai[i] = nama;
                         System.out.println("Berhasil menambahkan mahasiswa");
                         break;
+                    } else {
+                        System.out.println("Terjadi kesalahan");
                     }
                 }
             }

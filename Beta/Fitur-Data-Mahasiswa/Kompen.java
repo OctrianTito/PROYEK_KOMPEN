@@ -84,9 +84,9 @@ public class Kompen {
             System.out.println();
 
             switch (aksi) {
-                case 1:
+                case 1:// Input data mahasiswa
 
-                    // Input nilai variabel
+                    
                     do {
 
                         // Input ke variabel sementara
@@ -123,12 +123,12 @@ public class Kompen {
                         }
 
                         // mengembalikan variabel ke nilai default
-                        namaMhs = null;
+                        /*namaMhs = null;
                         NIM = 0;
                         nomorTlp = null;
                         semesterYgDilewati = 0;
                         jmlAlpha = 0;
-                        jmlKompen = 0;
+                        jmlKompen = 0;*/
 
                         System.out.println();
                         System.out.print("Apakah ingin menambahkan data lagi?(y/n) ");
@@ -136,9 +136,9 @@ public class Kompen {
 
                     } while (stop == 'y' || stop == 'Y');
 
-                case 2:
+                case 2:// Output data mahasiswa
 
-                    // Output
+                    
                     System.out.println("=========================\n");
                     for (int k = 0, j = 1; k < 5 && j <= 5; k++) {
                         if (namaMahasiswa[k] != null) {
@@ -154,9 +154,9 @@ public class Kompen {
                     System.out.println("=========================\n");
                     break;
 
-                case 3:
+                case 3:// Edit data mahasiswa
 
-                    // Edit data mahasiswa
+                    
                     System.out.print("Pilih nomor data yang akan diedit \t: ");
                     pilihEdit = sc.nextByte();
 
@@ -196,43 +196,58 @@ public class Kompen {
                     System.out.println();
                     break;
 
-                case 4:
+                case 4:// Hapus data mahasiswa
 
-                    // Hapus data
+                    
                     System.out.print("Pilih nomor data yang akan dihapus \t: ");
                     pilihHapus = sc.nextByte();
+                    int hapus = -1;
 
-                    // Menghapus data
-                    namaMahasiswa[pilihHapus - 1] = null;
-                    nim[pilihHapus - 1] = 0;
-                    nomorTelepon[pilihHapus - 1] = null;
-                    semesterYangDilewati[pilihHapus - 1] = 0;
-                    jumlahAlpha[pilihHapus - 1] = 0;
-                    jumlahKompen[pilihHapus - 1] = 0;
+                    // Cari index data
+                    for (int i = 0; i < namaMahasiswa.length; i++) {
+                        if (pilihHapus >= 1 && pilihHapus <= namaMahasiswa.length) {
+                            hapus = pilihHapus - 1;
+                            break;
+                        }
+                    }
+                    ;
 
-                    // wip
-                    
-                    // Mengisi indeks kosong
-                    // for (int i = pilihHapus; i < 5; i++) {
-                    //     if (namaMahasiswa[i - 1] == null) {
+                    if (hapus != -1) {
+                        // Mengisi indeks kosong
 
-                    //         // Memajukan nomor indeks
-                    //         namaMahasiswa[pilihHapus - 1] = namaMahasiswa[i];
-                    //         nim[pilihHapus - 1] = nim[i];
-                    //         nomorTelepon[pilihHapus - 1] = nomorTelepon[i];
-                    //         semesterYangDilewati[pilihHapus - 1] = semesterYangDilewati[i];
-                    //         jumlahAlpha[pilihHapus - 1] = jumlahAlpha[i];
-                    //         jumlahKompen[pilihHapus - 1] = jumlahKompen[i];
+                        for (int i = hapus; i < namaMahasiswa.length; i++) {
+                            if (namaMahasiswa[i] == null) {
 
-                    //         // Menghapus nilai di nomor indeks sebelumnya
-                    //         namaMahasiswa[i] = null;
-                    //         nim[i] = 0;
-                    //         nomorTelepon[i] = null;
-                    //         semesterYangDilewati[i] = 0;
-                    //         jumlahAlpha[i] = 0;
-                    //         jumlahKompen[i] = 0;
-                    //     }
-                    // }
+                                // Memajukan nomor indeks
+                                namaMahasiswa[i] = namaMahasiswa[i + 1];
+                                nim[i] = nim[i + 1];
+                                nomorTelepon[i] = nomorTelepon[i + 1];
+                                semesterYangDilewati[i] = semesterYangDilewati[i + 1];
+                                jumlahAlpha[i] = jumlahAlpha[i + 1];
+                                jumlahKompen[i] = jumlahKompen[i + 1];
+
+                                // Menghapus nilai di nomor indeks sebelumnya
+                                namaMahasiswa[i] = null;
+                                nim[i] = 0;
+                                nomorTelepon[i] = null;
+                                semesterYangDilewati[i] = 0;
+                                jumlahAlpha[i] = 0;
+                                jumlahKompen[i] = 0;
+                            }
+                        }
+
+                        // Set data ke nilai default
+                        namaMahasiswa[pilihHapus - 1] = null;
+                        nim[pilihHapus - 1] = 0;
+                        nomorTelepon[pilihHapus - 1] = null;
+                        semesterYangDilewati[pilihHapus - 1] = 0;
+                        jumlahAlpha[pilihHapus - 1] = 0;
+                        jumlahKompen[pilihHapus - 1] = 0;
+
+                    } else {
+
+                    }
+                    ;
 
                     System.out.println("Data berhasil dihapus");
 
@@ -255,8 +270,8 @@ public class Kompen {
 
                     break;
 
-                case 0:
-                    // Exit
+                case 0:// Exit
+                    
                     System.out.println("Terimakasih sudah menggunakan program ini");
                     run = false;
                     break;
