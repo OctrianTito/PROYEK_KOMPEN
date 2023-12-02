@@ -1,10 +1,9 @@
 import java.util.Scanner;
 
 public class lamanawal {
-    static Scanner sc = new Scanner(System.in);
-
-    // Array data
-
+    static Scanner sc = new Scanner (System.in);
+    
+    // Array Data
     static String strMahasiswa[][] = new String[5][5];
     static int intMahasiswa[][] = new int[5][4];
 
@@ -54,64 +53,86 @@ public class lamanawal {
         }
     }
 
-    // Fungsi Menu Login
-    static void Login(String[][] users, String[][] userAdmin, int numUsers) {
-        String usernameInput, passInput;
-        System.out.print("Masukkan Username : ");
-        usernameInput = sc.nextLine();
-        System.out.print("Masukkan Password : ");
-        passInput = sc.nextLine();
+     
+   // Fungsi Menu Login
+   static void Login(String[][] users, String[][] userAdmin, int numUsers) {
+    String usernameInput, passInput;
+    System.out.print("Masukkan Username : ");
+    usernameInput = sc.nextLine();
+    System.out.print("Masukkan Password : ");
+    passInput = sc.nextLine();
 
-        boolean found = false;
+    boolean found = false;
 
-        for (int i = 0; i < numUsers || i < userAdmin.length; i++) {
-            if (usernameInput.equals(users[i][0]) && passInput.equals(users[i][1])) {
-                found = true;
-                System.out.println("\tAnda berhasil login!.");
-                break;
-            } else if (usernameInput.equals(userAdmin[i][0]) && passInput.equals(userAdmin[i][1])) {
-                found = true;
-                System.out.println("================================================");
-                System.out.println("\tAnda berhasil Login sebagai Admin");
+    for (int i = 0; i < numUsers || i < userAdmin.length; i++) {
+        if (usernameInput.equals(users[i][0]) && passInput.equals(users[i][1])) {
+            found = true;
+            System.out.println("\tAnda berhasil login!.");
+            break;
+        } else if (usernameInput.equals(userAdmin[i][0]) && passInput.equals(userAdmin[i][1])) {
+            found = true;
+            System.out.println("------------------------------------------------");
+            System.out.println("================================================");
+            System.out.println("\tAnda berhasil Login sebagai Admin");
+            System.out.println("================================================");
+            System.out.println("------------------------------------------------");
+            
+            LamanAdmin();
+
+        }
+
+    }
+    if (!found) {
+        System.out.println("Username atau password tidak terdaftar");
+    }
+}
+    static void LamanAdmin (){
+        do{
+            System.out.println("================================================");
+            System.out.println("------------------------------------------------");
+            System.out.println("\t\t LAMAN ADMIN ");
+            System.out.println("------------------------------------------------");
+            System.out.println("================================================");
+            System.out.println("\t\t1.Penambahan User \t\t ");
+            System.out.println("\t\t2.Data Mahasiswa\t\t ");
+            System.out.println("\t\t3.Perhitungan Kompen\t\t ");
+            System.out.println("\t\t4.List Kompen\t\t ");
+            System.out.println("\t\t5.Validasi Komepn\t\t ");
+            System.out.println("\t\t6.Peraturan\t\t ");
+            System.out.println("\t\t7.Logout\t\t ");
+            
+            System.out.print("\t\tpilih (1/2/3/4/5/6/) :");
+            char plhadmn = sc.next().charAt(0);
+            sc.nextLine(); // Membersihkan newline dari buffer masukan
+            System.out.println("------------------------------------------------");
+            System.out.println("================================================");
+            switch (plhadmn) {
+                case '1':
+                    
+                    break;
+                case '2':
+                    dataMahasiwa();
+                    break;
+                case '7':
+                System.out.println("\tAnda berhasil logout.");
+                return;
+                default:
+                    break;
             }
-
-        }
-        if (!found) {
-            System.out.println("Username atau password tidak terdaftar");
-        }
+            if(plhadmn!='7'){
+                System.out.print("Ingin Kembali ke laman Admin? (ya/tidak) : ");
+            }
+        }while(sc.next().equalsIgnoreCase("ya"));
     }
-
-    // Fungsi Menu Register User
-    static void Register(String[][] users, int numUsers) {
-        String stop;
-
-        System.out.println("================================================");
-        System.out.println("------------------------------------------------");
-        System.out.println("\t\tLaman Register User");
-        System.out.println("------------------------------------------------");
-        System.out.println("================================================");
-
-        if (numUsers < users.length) {
-            System.out.print("Masukkan Username: ");
-            users[numUsers][0] = sc.next();
-            System.out.print("Masukkan Password: ");
-            users[numUsers][1] = sc.next();
-
-            numUsers++; // Tambahkan jumlah pengguna yang telah diregistrasi
-        } else {
-            System.out.println("Kapasitas pengguna penuh. Tidak dapat menambahkan username.");
-
-        }
-    }
-
-    // Data mahasiswa
-
+    // Fungsi Penambahan User
+     
+    // Fungsi Data mahasiswa
     static void dataMahasiwa() {
 
         // variabel pemilihan
         short pilihEdit, pilihHapus;
         boolean run = true;
-
+        
         // Contoh data 1
         strMahasiswa[0][0] = "afif"; // nama
         strMahasiswa[0][1] = "TI-1H"; // kelas
@@ -167,7 +188,7 @@ public class lamanawal {
         intMahasiswa[4][3] = 1; // validasi
         strMahasiswa[4][4] = "tes"; // pekerjaan siswa
 
-        tampilDataMahasiswa();
+        //tampilDataMahasiswa();
 
         do {
             // Pemilihan aksi
@@ -176,7 +197,7 @@ public class lamanawal {
             System.out.println("2. Lihat data mahasiswa");
             System.out.println("3. Edit data mahasiswa");
             System.out.println("4. Hapus data mahasiswa");
-            System.out.println("0. Log out");
+            System.out.println("0. Kembali ke Laman Admin");
 
             System.out.print("\npilih: ");
             byte aksi = sc.nextByte();
@@ -196,11 +217,13 @@ public class lamanawal {
                     hapusDataMahasiswa();
                     break;
                 case 0:
-
-                    break;
+                    run = false;
+                    return;
                 default:
                     break;
             }
+            
+            
         } while (run);
     }
 
@@ -381,29 +404,30 @@ public class lamanawal {
         System.out.println("Berhasil menghapus data");
         tampilDataMahasiswa();
     }
+    //Fungsi Register
+    static void Register(String[][] users, int numUsers) {
+        
+        System.out.println("================================================");
+        System.out.println("------------------------------------------------");
+        System.out.println("\t\tLaman Register User");
+        System.out.println("------------------------------------------------");
+        System.out.println("================================================");
 
-    static boolean Lanjut(boolean kembali, char plh) {
-        boolean lagi = true;
-        if (plh == '1') {
-            Login(null, null, plh);
-        } else if (plh == '2') {
-            Register(null, plh);
-        } else if (plh != '1' || plh != '2') {
-            System.out.println("Pilihan tidak tersedia");
-            System.out.print("Apakah anda ingin kembali ke laman awal (ya/tidak) : ");
-            String response = sc.nextLine();
-            if (response.equalsIgnoreCase("ya")) {
-                lagi = true;
-            } else {
-                lagi = false;
-            }
+        if (numUsers < users.length) {
+            System.out.print("Masukkan Username: ");
+            users[numUsers][0] = sc.next();
+            System.out.print("Masukkan Password: ");
+            users[numUsers][1] = sc.next();
+
+            numUsers++; // Tambahkan jumlah pengguna yang telah diregistrasi
+        } else {
+            System.out.println("Kapasitas pengguna penuh. Tidak dapat menambahkan username.");
+
         }
-        return lagi;
     }
-
+    
     public static void main(String[] args) {
-
-        String[][] users = new String[100][2];
+        String[][] users = new String[10][3];
         String[][] userAdmin = new String[3][2];
         userAdmin[0][0] = "Admin1";
         userAdmin[0][1] = "Admin45";
@@ -437,7 +461,7 @@ public class lamanawal {
             break;
 
             default:
-            Lanjut(kembali, plh);
+            
             }
 
             // dataMahasiwa();
