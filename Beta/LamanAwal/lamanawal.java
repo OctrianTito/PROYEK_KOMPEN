@@ -425,7 +425,20 @@ public class lamanawal {
 
         }
     }
-    
+    static boolean Lanjut(boolean kembali, char plh) {
+        boolean lagi = true;
+        if (plh != '1' && plh != '2') {
+            System.out.println("Pilihan tidak tersedia");
+            System.out.print("Apakah anda ingin kembali ke laman awal (ya/tidak) : ");
+            String response = sc.nextLine();
+            if (response.equalsIgnoreCase("ya")) {
+                lagi = true;
+            } else {
+                lagi = false;
+            }
+        }
+        return lagi;
+    }
     public static void main(String[] args) {
         String[][] users = new String[10][3];
         String[][] userAdmin = new String[3][2];
@@ -461,7 +474,7 @@ public class lamanawal {
             break;
 
             default:
-            
+            Lanjut(kembali,plh);
             }
 
             // dataMahasiwa();
