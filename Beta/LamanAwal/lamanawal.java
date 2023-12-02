@@ -5,8 +5,8 @@ public class lamanawal {
 
     // Array data
 
-    static String StrMahasiswa[][] = new String[5][5];
-    static int IntMahasiswa[][] = new int[5][4];
+    static String strMahasiswa[][] = new String[5][5];
+    static int intMahasiswa[][] = new int[5][4];
 
     // Variabel data sementara
     static String namaMhs, NIM, kelas,
@@ -14,7 +14,7 @@ public class lamanawal {
     static int jmlKompen, validSiswa,
             semesterYgDilewati, jmlAlpha;
 
-    static void defaultVar(){
+    static void defaultTempVar() {
         namaMhs = null;
         NIM = null;
         kelas = null;
@@ -113,37 +113,59 @@ public class lamanawal {
         boolean run = true;
 
         // Contoh data 1
-        StrMahasiswa[0][0] = "afif"; // nama
-        StrMahasiswa[0][1] = "TI-1H"; // kelas
-        StrMahasiswa[0][2] = "235445"; // nim
-        StrMahasiswa[0][3] = "0854753"; // no telp
-        IntMahasiswa[0][0] = 2; // semester yg dilewati
-        IntMahasiswa[0][1] = 3; // jml alpha
-        IntMahasiswa[0][2] = 8; // poin kompen
-        IntMahasiswa[0][3] = 1; // validasi
-        StrMahasiswa[0][4] = "tes"; // pekerjaan siswa
+        strMahasiswa[0][0] = "afif"; // nama
+        strMahasiswa[0][1] = "TI-1H"; // kelas
+        strMahasiswa[0][2] = "235445"; // nim
+        strMahasiswa[0][3] = "0854753"; // no telp
+        intMahasiswa[0][0] = 2; // semester yg dilewati
+        intMahasiswa[0][1] = 3; // jml alpha
+        intMahasiswa[0][2] = 8; // poin kompen
+        intMahasiswa[0][3] = 1; // validasi
+        strMahasiswa[0][4] = "tes"; // pekerjaan siswa
 
         // Contoh data 2
-        StrMahasiswa[1][0] = "andi"; // nama
-        StrMahasiswa[1][1] = "TI-1H"; // kelas
-        StrMahasiswa[1][2] = "235445"; // nim
-        StrMahasiswa[1][3] = "0854753"; // no telp
-        IntMahasiswa[1][0] = 2; // semester yg dilewati
-        IntMahasiswa[1][1] = 3; // jml alpha
-        IntMahasiswa[1][2] = 8; // poin kompen
-        IntMahasiswa[1][3] = 1; // validasi
-        StrMahasiswa[1][4] = "-"; // pekerjaan siswa
+        strMahasiswa[1][0] = "andi"; // nama
+        strMahasiswa[1][1] = "TI-1H"; // kelas
+        strMahasiswa[1][2] = "235445"; // nim
+        strMahasiswa[1][3] = "0854753"; // no telp
+        intMahasiswa[1][0] = 2; // semester yg dilewati
+        intMahasiswa[1][1] = 3; // jml alpha
+        intMahasiswa[1][2] = 8; // poin kompen
+        intMahasiswa[1][3] = 1; // validasi
+        strMahasiswa[1][4] = "-"; // pekerjaan siswa
 
-        // Contoh data 2
-        StrMahasiswa[2][0] = "anya"; // nama
-        StrMahasiswa[2][1] = "TI-1H"; // kelas
-        StrMahasiswa[2][2] = "235445"; // nim
-        StrMahasiswa[2][3] = "0854753"; // no telp
-        IntMahasiswa[2][0] = 2; // semester yg dilewati
-        IntMahasiswa[2][1] = 3; // jml alpha
-        IntMahasiswa[2][2] = 8; // poin kompen
-        IntMahasiswa[2][3] = 1; // validasi
-        StrMahasiswa[2][4] = "tes"; // pekerjaan siswa
+        // Contoh data 3
+        strMahasiswa[2][0] = "anya"; // nama
+        strMahasiswa[2][1] = "TI-1H"; // kelas
+        strMahasiswa[2][2] = "235445"; // nim
+        strMahasiswa[2][3] = "0854753"; // no telp
+        intMahasiswa[2][0] = 2; // semester yg dilewati
+        intMahasiswa[2][1] = 3; // jml alpha
+        intMahasiswa[2][2] = 8; // poin kompen
+        intMahasiswa[2][3] = 1; // validasi
+        strMahasiswa[2][4] = "tes"; // pekerjaan siswa
+
+        // Contoh data 4
+        strMahasiswa[3][0] = "arif"; // nama
+        strMahasiswa[3][1] = "TI-1H"; // kelas
+        strMahasiswa[3][2] = "235445"; // nim
+        strMahasiswa[3][3] = "0854753"; // no telp
+        intMahasiswa[3][0] = 2; // semester yg dilewati
+        intMahasiswa[3][1] = 3; // jml alpha
+        intMahasiswa[3][2] = 8; // poin kompen
+        intMahasiswa[3][3] = 1; // validasi
+        strMahasiswa[3][4] = "tes"; // pekerjaan siswa
+
+        // Contoh data 5
+        strMahasiswa[4][0] = "asa"; // nama
+        strMahasiswa[4][1] = "TI-1H"; // kelas
+        strMahasiswa[4][2] = "235445"; // nim
+        strMahasiswa[4][3] = "0854753"; // no telp
+        intMahasiswa[4][0] = 2; // semester yg dilewati
+        intMahasiswa[4][1] = 3; // jml alpha
+        intMahasiswa[4][2] = 8; // poin kompen
+        intMahasiswa[4][3] = 1; // validasi
+        strMahasiswa[4][4] = "tes"; // pekerjaan siswa
 
         tampilDataMahasiswa();
 
@@ -219,17 +241,17 @@ public class lamanawal {
         }
 
         // Memasukkan ke array dari variabel sementara
-        for (int i = 0; i < StrMahasiswa.length; i++) {
-            if (StrMahasiswa[i][0] == null) {
-                StrMahasiswa[i][0] = namaMhs; // nama
-                StrMahasiswa[i][1] = kelas; // kelas
-                StrMahasiswa[i][2] = NIM; // nim
-                StrMahasiswa[i][3] = nomorTlp; // no telp
-                IntMahasiswa[i][0] = semesterYgDilewati; // semester yg dilewati
-                IntMahasiswa[i][1] = jmlAlpha; // jml alpha
-                IntMahasiswa[i][2] = jmlKompen; // poin kompen
-                IntMahasiswa[i][3] = validSiswa; // validasi
-                StrMahasiswa[i][4] = pekerjaan; // pekerjaan siswa
+        for (int i = 0; i < strMahasiswa.length; i++) {
+            if (strMahasiswa[i][0] == null) {
+                strMahasiswa[i][0] = namaMhs; // nama
+                strMahasiswa[i][1] = kelas; // kelas
+                strMahasiswa[i][2] = NIM; // nim
+                strMahasiswa[i][3] = nomorTlp; // no telp
+                intMahasiswa[i][0] = semesterYgDilewati; // semester yg dilewati
+                intMahasiswa[i][1] = jmlAlpha; // jml alpha
+                intMahasiswa[i][2] = jmlKompen; // poin kompen
+                intMahasiswa[i][3] = validSiswa; // validasi
+                strMahasiswa[i][4] = pekerjaan; // pekerjaan siswa
 
                 System.out.println("\nBerhasil menambahkan data\n");
 
@@ -238,7 +260,7 @@ public class lamanawal {
                 continue;
             }
         }
-        defaultVar();
+        defaultTempVar();
 
         // output
         tampilDataMahasiswa();
@@ -248,22 +270,22 @@ public class lamanawal {
     static void tampilDataMahasiswa() {
         System.out.println("=========================");
         System.out.println();
-        for (int i = 0, j = 1; i < StrMahasiswa.length && j <= 5; i++, j++) {
-            if (StrMahasiswa[i][0] != null) {
-                System.out.println((j) + ". Nama Mahasiswa \t\t= " + StrMahasiswa[i][0]);
-                System.out.println("   Kelas \t\t\t= " + StrMahasiswa[i][1]);
-                System.out.println("   NIM \t\t\t\t= " + StrMahasiswa[i][2]);
-                System.out.println("   Nomor Telepon \t\t= " + StrMahasiswa[i][3]);
-                System.out.println("   Semester Yang Dilewati \t= " + IntMahasiswa[i][0]);
-                System.out.println("   Jumlah Alpha \t\t= " + IntMahasiswa[i][1]);
-                System.out.println("   Jumlah Kompen \t\t= " + IntMahasiswa[i][2]);
+        for (int i = 0, j = 1; i < strMahasiswa.length; i++) {
+            if (strMahasiswa[i][0] != null) {
+            System.out.println((j++) + ". Nama Mahasiswa \t\t= " + strMahasiswa[i][0]);
+            System.out.println("   Kelas \t\t\t= " + strMahasiswa[i][1]);
+            System.out.println("   NIM \t\t\t\t= " + strMahasiswa[i][2]);
+            System.out.println("   Nomor Telepon \t\t= " + strMahasiswa[i][3]);
+            System.out.println("   Semester Yang Dilewati \t= " + intMahasiswa[i][0]);
+            System.out.println("   Jumlah Alpha \t\t= " + intMahasiswa[i][1]);
+            System.out.println("   Jumlah Kompen \t\t= " + intMahasiswa[i][2]);
 
-                String statusKompen = IntMahasiswa[i][3] == 1 ? "Ada" : "Tidak ada";
+            String statusKompen = intMahasiswa[i][3] == 1 ? "Ada" : "Tidak ada";
 
-                System.out.println("   Status kompen \t\t= " + statusKompen);
-                System.out.println("   Pekerjaan yang dikerjkan \t= " + StrMahasiswa[i][4]);
+            System.out.println("   Status kompen \t\t= " + statusKompen);
+            System.out.println("   Pekerjaan yang dikerjkan \t= " + strMahasiswa[i][4]);
 
-                System.out.println();
+            System.out.println();
             }
         }
         System.out.println("=========================");
@@ -272,53 +294,92 @@ public class lamanawal {
 
     // Edit data mahasiswa
     static void editDataMahasiswa() {
-        tampilDataMahasiswa();
+        // tampilDataMahasiswa();
         System.out.print("Pilih nomor data yang akan diedit \t: ");
         pilihEdit = sc.nextByte();
 
+        int edit = pilihEdit - 1;
+
         // Mengganti nilai dari indeks array
         System.out.print("Masukkan Nama Mahasiswa \t\t: ");
-        StrMahasiswa[pilihEdit - 1][0] = sc.next();
+        strMahasiswa[edit][0] = sc.next();
 
         System.out.print("Masukkan Kelas \t\t\t\t: ");
-        StrMahasiswa[pilihEdit - 1][1] = sc.next();
+        strMahasiswa[edit][1] = sc.next();
 
         System.out.print("Masukkan NIM \t\t\t\t: ");
-        StrMahasiswa[pilihEdit - 1][2] = sc.next();
+        strMahasiswa[edit][2] = sc.next();
 
         System.out.print("Masukkan Nomor Telepon \t\t\t: ");
-        StrMahasiswa[pilihEdit - 1][3] = sc.next();
+        strMahasiswa[edit][3] = sc.next();
 
         System.out.print("Masukkan Semester Yang Dilewati \t: ");
-        IntMahasiswa[pilihEdit - 1][0] = sc.nextByte();
+        intMahasiswa[edit][0] = sc.nextByte();
 
         System.out.print("Masukkan jumlah alpha \t\t\t: ");
-        IntMahasiswa[pilihEdit - 1][1] = sc.nextShort();
+        intMahasiswa[edit][1] = sc.nextShort();
 
-        // jumlah kompen                jumlah alpha                    semester yg dilewati
-        IntMahasiswa[pilihEdit - 1][2] = IntMahasiswa[pilihEdit - 1][1] * 2 * IntMahasiswa[pilihEdit - 1][0];
+        // jumlah kompen jumlah alpha semester yg dilewati
+        intMahasiswa[edit][2] = intMahasiswa[edit][1] * 2 * intMahasiswa[edit][0];
 
         System.out.println("Status kompen \t\t\t\t: ");
         System.out.println("1. Ada");
         System.out.println("2. Tidak ada");
         System.out.print("Pilih (1/2) \t\t\t\t: ");
-        IntMahasiswa[pilihEdit - 1][3] = sc.nextInt();
+        intMahasiswa[edit][3] = sc.nextInt();
 
-        if (IntMahasiswa[pilihEdit - 1][3] == 1) {
+        if (intMahasiswa[edit][3] == 1) {
             System.out.print("Pekerjaan yang dikerjakan \t\t: ");
-            StrMahasiswa[pilihEdit - 1][4] = sc.next();
+            strMahasiswa[edit][4] = sc.next();
         } else {
-            StrMahasiswa[pilihEdit - 1][4] = "-";
+            strMahasiswa[edit][4] = "-";
         }
 
-        defaultVar();
+        defaultTempVar();
         // Output
         tampilDataMahasiswa();
     }
 
     // Hapus data mahasiswa
     static void hapusDataMahasiswa() {
-        // work in progress
+
+        System.out.print("Pilih nomor data yang akan dihapus \t: ");
+        pilihHapus = sc.nextByte();
+
+        int hapus = pilihHapus - 1;
+
+        if (pilihHapus == strMahasiswa.length) {
+            for (int i = 0; i < strMahasiswa[1].length; i++) {
+                strMahasiswa[hapus][i] = null;
+            }
+            for (int i = 0; i < intMahasiswa[1].length; i++) {
+                intMahasiswa[hapus][i] = 0;
+            }
+        } else {
+            for (int i = hapus; i < strMahasiswa.length - 1; i++) {
+                int next = i + 1;
+                
+                // mengisi index kosong
+                for (int k = 0; k < strMahasiswa[0].length; k++) {
+                    strMahasiswa[i][k] = strMahasiswa[next][k];
+                }
+
+                for (int k = 0; k < intMahasiswa[0].length; k++) {
+                    intMahasiswa[i][k] = intMahasiswa[next][k];
+                }
+
+                // mengubah menjadi nilai default
+                for (int j = 0; j < strMahasiswa[0].length; j++) {
+                    strMahasiswa[next][j] = null;
+                }
+
+                for (int j = 0; j < intMahasiswa[0].length; j++) {
+                    intMahasiswa[next][j] = 0;
+                }
+            }
+        }
+        System.out.println("Berhasil menghapus data");
+        tampilDataMahasiswa();
     }
 
     static boolean Lanjut(boolean kembali, char plh) {
