@@ -40,7 +40,7 @@ public class Peraturan {
                 break;
 
                 case 0:
-                System.out.println("Terima kasih!");
+                System.out.println("Sampai Jumpa Lagi!");
                 break;
 
                 default:
@@ -58,8 +58,8 @@ public class Peraturan {
         do {
             for (int i = 0; i < maxPeraturan; i++) {
             System.out.print("Masukkan Peraturan : ");
-            listPeraturan[i] = sc.nextLine();
-            
+            listPeraturan[i] = sc.next();
+
             System.out.print("Masukkan Poin pelanggarannya : ");
             poinPelanggaran[i] = sc.nextInt();
             sc.nextLine();
@@ -84,10 +84,15 @@ public class Peraturan {
         System.out.printf("================================================================\n");
 
         for (int i = 0; i < maxPeraturan; i++) {
+            if (listPeraturan[i] != null && poinPelanggaran[i] != 0) {
             System.out.println((i + 1) + "." + " " + listPeraturan[i]);
             System.out.printf("-------------------------------------------------------------\n");
             System.out.println("Poin Pelanggaran : " + poinPelanggaran[i]);
             System.out.printf("-------------------------------------------------------------\n");
+            
+            } else {
+                continue;
+            }
         }
     }
 
@@ -100,10 +105,10 @@ public class Peraturan {
         System.out.println();
 
         System.out.print("Masukkan peraturan yang baru : ");
-        listPeraturan[nomorPeraturan - 1] = sc.nextLine();
+        listPeraturan[nomorPeraturan - 1] = sc.next();
         System.out.println();
 
-        System.out.println("Masukkan poin pelanggaran yang baru : ");
+        System.out.print("Masukkan poin pelanggaran yang baru : ");
         poinPelanggaran[nomorPeraturan - 1] = sc.nextInt();
     }
     static void hapusPeraturan() {
@@ -117,7 +122,7 @@ public class Peraturan {
             listPeraturan[i] = listPeraturan[i + 1];
             poinPelanggaran[i] = poinPelanggaran[i + 1];
 
-            System.out.println("Peraturan berhasil dihapus");
         }
+        System.out.println("Peraturan berhasil dihapus");
     }
 }
