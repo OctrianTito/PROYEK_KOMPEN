@@ -2,14 +2,14 @@ import java.util.Scanner;
 
 public class lamanawal {
     static Scanner sc = new Scanner (System.in);
-    
-    // Array Data
-    static String strMahasiswa[][] = new String[5][5];
-    static int intMahasiswa[][] = new int[5][4];
+
+    //Data Array
+    static String strMahasiswa[][] = new String[20][7];
+    static int intMahasiswa[][] = new int[20][4];
 
     // Variabel data sementara
     static String namaMhs, NIM, kelas,
-            nomorTlp, pekerjaan;
+            nomorTlp, pekerjaan,username,password;
     static int jmlKompen, validSiswa,
             semesterYgDilewati, jmlAlpha;
 
@@ -23,6 +23,8 @@ public class lamanawal {
         validSiswa = 0;
         semesterYgDilewati = 0;
         jmlAlpha = 0;
+        username = null;
+        password = null;
     }
 
     // variabel pemilihan
@@ -61,31 +63,37 @@ public class lamanawal {
     usernameInput = sc.nextLine();
     System.out.print("Masukkan Password : ");
     passInput = sc.nextLine();
+    System.out.println("================================================");
+    System.out.println("------------------------------------------------");
 
     boolean found = false;
 
-    for (int i = 0; i < numUsers || i < userAdmin.length; i++) {
-        if (usernameInput.equals(users[i][0]) && passInput.equals(users[i][1])) {
-            found = true;
-            System.out.println("\tAnda berhasil login!.");
-            break;
-        } else if (usernameInput.equals(userAdmin[i][0]) && passInput.equals(userAdmin[i][1])) {
-            found = true;
-            System.out.println("------------------------------------------------");
-            System.out.println("================================================");
-            System.out.println("\tAnda berhasil Login sebagai Admin");
-            System.out.println("================================================");
-            System.out.println("------------------------------------------------");
-            
-            LamanAdmin();
+        for (int i = 0; i < numUsers || i < userAdmin.length; i++) {
+            if (usernameInput.equals(users[i][0]) && passInput.equals(users[i][1])) {
+                found = true;
+                System.out.println("\tAnda berhasil login!.");
+                break;
+            } else if (usernameInput.equals(userAdmin[i][0]) && passInput.equals(userAdmin[i][1])) {
+                found = true;
+                System.out.println("------------------------------------------------");
+                System.out.println("================================================");
+                System.out.println("\tAnda berhasil Login sebagai Admin");
+                System.out.println("================================================");
+                System.out.println("------------------------------------------------");
+                
+                LamanAdmin();
+
+            }
 
         }
+        if (!found) {
+            System.out.println();
+            System.out.println("      Username atau password tidak terdaftar");
+            System.out.println("\tCoba Registrasi dahulu");
+        }
+    }
 
-    }
-    if (!found) {
-        System.out.println("Username atau password tidak terdaftar");
-    }
-}
+    //Fungsi Menu Admin
     static void LamanAdmin (){
         do{
             System.out.println("================================================");
@@ -108,7 +116,7 @@ public class lamanawal {
             System.out.println("================================================");
             switch (plhadmn) {
                 case '1':
-                    
+                    PenambahanUser(strMahasiswa, plhadmn);
                     break;
                 case '2':
                     dataMahasiwa();
@@ -124,8 +132,63 @@ public class lamanawal {
             }
         }while(sc.next().equalsIgnoreCase("ya"));
     }
-    // Fungsi Penambahan User
-     
+
+    // Fungsi Penambahan User 
+    static void PenambahanUser (String[][] users, int numUsers){
+        
+        String tmbh = "Y", knfrms = "Y";
+
+        // Menu Rgister User
+        System.out.println("Menu");
+        System.out.println("1.menambahkan username");
+        System.out.println("2.melihat data user ");
+        System.out.println("3.Kembali ke laman awal ");
+        System.out.print("Masukkan pilihan anda (1/2/3) : ");
+        int menu = sc.nextInt();
+
+        // pemilihan menu
+        switch (menu) {
+            // menu 1 memasukkan username and password
+            case 1:
+                System.out.println("================================================");
+                System.out.println("\t\t Penambahan User ");
+                System.out.println("------------------------------------------------");
+                for (int i = 0; i < users.length; i++) {
+                    System.out.print("Masukkan Username : ");
+                    users[i][0] = sc.next();
+                    System.out.print("Masukkan Password : ");
+                    users[i][1] = sc.next();
+
+                    System.out.print("Apakah anda akan menambahkan lagi (Y/N): ");
+                    tmbh = sc.next();
+                    if (tmbh.equalsIgnoreCase("y")) {
+                        continue;
+                    }else{
+                        break;
+                    }
+                        
+                    }
+                    break;
+                // menu 2 melihat data yang telah dimasukkan
+            case 2:
+            System.out.println("================================================");
+            System.out.println("\t\t Data User Terdaftar ");
+            System.out.println("------------------------------------------------");
+        
+            for (int i = 0; i < numUsers; i++) {
+                System.out.println("Username: " + users[i][0] + ", Password: " + users[i][1]+", Nama: " + users[i][2]);
+            }
+        
+            System.out.println("================================================");
+            break;
+            //Kembali kelaman awal
+            case 3:
+                return;
+            }
+                
+        }
+
+    
     // Fungsi Data mahasiswa
     static void dataMahasiwa() {
 
@@ -275,6 +338,8 @@ public class lamanawal {
                 intMahasiswa[i][2] = jmlKompen; // poin kompen
                 intMahasiswa[i][3] = validSiswa; // validasi
                 strMahasiswa[i][4] = pekerjaan; // pekerjaan siswa
+                strMahasiswa[i][5] = username;  //username siswa
+                strMahasiswa[i][6] = password; //password siswa
 
                 System.out.println("\nBerhasil menambahkan data\n");
 
@@ -406,28 +471,65 @@ public class lamanawal {
     }
     //Fungsi Register
     static void Register(String[][] users, int numUsers) {
-        
         System.out.println("================================================");
         System.out.println("------------------------------------------------");
-        System.out.println("\t\tLaman Register User");
+        System.out.println("\t\t LAMAN REGISTRASI ");
         System.out.println("------------------------------------------------");
         System.out.println("================================================");
-
-        if (numUsers < users.length) {
-            System.out.print("Masukkan Username: ");
-            users[numUsers][0] = sc.next();
-            System.out.print("Masukkan Password: ");
-            users[numUsers][1] = sc.next();
-
-            numUsers++; // Tambahkan jumlah pengguna yang telah diregistrasi
-        } else {
-            System.out.println("Kapasitas pengguna penuh. Tidak dapat menambahkan username.");
-
+    
+        // Memasukkan username and password
+        System.out.print("Masukkan Username : ");
+        String usernameInput = sc.nextLine();
+        System.out.print("Masukkan Password : ");
+        String passInput = sc.nextLine();
+    
+        // Pengecekan ada tidaknya username 
+        boolean usernameExists = false;
+        for (int i = 0; i < numUsers; i++) {
+            if (usernameInput.equals(users[i][0])) {
+                usernameExists = true;
+                break;
+            }
         }
-    }
+    
+        if (usernameExists) {
+            System.out.println("Username sudah terdaftar. Silakan pilih username lain.");
+        } else {
+            //Pengecekan data Mahasiswa
+            System.out.print("Masukkan Nama Mahasiswa : ");
+            String namaMhsInput = sc.nextLine();
+            System.out.print("Masukkan Kelas Mahasiswa : ");
+            String kelasInput = sc.nextLine();
+            boolean dataExists = false;
+            for (int i = 0; i < strMahasiswa.length; i++) {
+                if (namaMhsInput.equals(strMahasiswa[i][0]) && kelasInput.equals(strMahasiswa[i][1])) {
+                    dataExists = true;
+                    break;
+                }
+            }
+    
+            if (dataExists) {
+                System.out.println("Data mahasiswa dengan nama dan kelas tersebut sudah ada.");
+            } else {
+                users[numUsers][1] = usernameInput;
+                users[numUsers][2] = passInput;
+                users[numUsers][0] = namaMhsInput;
+                strMahasiswa[numUsers][5] = usernameInput;
+                strMahasiswa[numUsers][6] = passInput;
+                numUsers++;
+    
+                System.out.println("Registrasi berhasil!");
+            }
+        }
+    }    
+    
     static boolean Lanjut(boolean kembali, char plh) {
         boolean lagi = true;
-        if (plh != '1' && plh != '2') {
+        if (plh == '1') {
+            Login(null, null, plh);
+        } else if (plh == '2') {
+            Register(null, plh);
+        } else if (plh != '1' || plh != '2') {
             System.out.println("Pilihan tidak tersedia");
             System.out.print("Apakah anda ingin kembali ke laman awal (ya/tidak) : ");
             String response = sc.nextLine();
@@ -439,8 +541,9 @@ public class lamanawal {
         }
         return lagi;
     }
+
     public static void main(String[] args) {
-        String[][] users = new String[10][3];
+        String[][] users = new String[50][3];
         String[][] userAdmin = new String[3][2];
         userAdmin[0][0] = "Admin1";
         userAdmin[0][1] = "Admin45";
@@ -472,9 +575,9 @@ public class lamanawal {
             case '2':
             Register(users, numUsers);
             break;
-
             default:
-            Lanjut(kembali,plh);
+            kembali = Lanjut(kembali, plh);
+            break;
             }
 
             // dataMahasiwa();
