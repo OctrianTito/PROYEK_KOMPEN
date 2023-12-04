@@ -123,7 +123,7 @@ public class lamanawal {
                     dataMahasiwa();
                     break;
                 case '3':
-                    // perhitunganKompen(); //
+                    PerhitunganKompen();
                 case '4':
                     // listKompen(); //
                     break;
@@ -208,35 +208,26 @@ public class lamanawal {
         boolean run = true;
         
         // Contoh data 1
-        strMahasiswa[0][0] = "afif"; // nama
+        strMahasiswa[0][0] = "Muhammad Afif Al Ghifari"; // nama
         strMahasiswa[0][1] = "TI-1H"; // kelas
-        strMahasiswa[0][2] = "235445"; // nim
-        strMahasiswa[0][3] = "0854753"; // no telp
-        intMahasiswa[0][0] = 2; // semester yg dilewati
-        intMahasiswa[0][1] = 3; // jml alpha
-        intMahasiswa[0][2] = 8; // poin kompen
+        strMahasiswa[0][2] = "2341720898"; // nim
+        strMahasiswa[0][3] = "085475323796"; // no telp
         intMahasiswa[0][3] = 1; // validasi
         strMahasiswa[0][4] = "tes"; // pekerjaan siswa
 
         // Contoh data 2
-        strMahasiswa[1][0] = "andi"; // nama
+        strMahasiswa[1][0] = "Fali Irham Maulana"; // nama
         strMahasiswa[1][1] = "TI-1H"; // kelas
-        strMahasiswa[1][2] = "235445"; // nim
-        strMahasiswa[1][3] = "0854753"; // no telp
-        intMahasiswa[1][0] = 2; // semester yg dilewati
-        intMahasiswa[1][1] = 3; // jml alpha
-        intMahasiswa[1][2] = 8; // poin kompen
+        strMahasiswa[1][2] = "2342869293"; // nim
+        strMahasiswa[1][3] = "085475321008"; // no telp
         intMahasiswa[1][3] = 1; // validasi
         strMahasiswa[1][4] = "-"; // pekerjaan siswa
 
         // Contoh data 3
-        strMahasiswa[2][0] = "anya"; // nama
+        strMahasiswa[2][0] = "Octrian Adiluhung Tito Putra"; // nama
         strMahasiswa[2][1] = "TI-1H"; // kelas
-        strMahasiswa[2][2] = "235445"; // nim
-        strMahasiswa[2][3] = "0854753"; // no telp
-        intMahasiswa[2][0] = 2; // semester yg dilewati
-        intMahasiswa[2][1] = 3; // jml alpha
-        intMahasiswa[2][2] = 8; // poin kompen
+        strMahasiswa[2][2] = "2341720078"; // nim
+        strMahasiswa[2][3] = "085771220364"; // no telp
         intMahasiswa[2][3] = 1; // validasi
         strMahasiswa[2][4] = "tes"; // pekerjaan siswa
 
@@ -245,9 +236,6 @@ public class lamanawal {
         strMahasiswa[3][1] = "TI-1H"; // kelas
         strMahasiswa[3][2] = "235445"; // nim
         strMahasiswa[3][3] = "0854753"; // no telp
-        intMahasiswa[3][0] = 2; // semester yg dilewati
-        intMahasiswa[3][1] = 3; // jml alpha
-        intMahasiswa[3][2] = 8; // poin kompen
         intMahasiswa[3][3] = 1; // validasi
         strMahasiswa[3][4] = "tes"; // pekerjaan siswa
 
@@ -256,9 +244,6 @@ public class lamanawal {
         strMahasiswa[4][1] = "TI-1H"; // kelas
         strMahasiswa[4][2] = "235445"; // nim
         strMahasiswa[4][3] = "0854753"; // no telp
-        intMahasiswa[4][0] = 2; // semester yg dilewati
-        intMahasiswa[4][1] = 3; // jml alpha
-        intMahasiswa[4][2] = 8; // poin kompen
         intMahasiswa[4][3] = 1; // validasi
         strMahasiswa[4][4] = "tes"; // pekerjaan siswa
 
@@ -344,9 +329,6 @@ public class lamanawal {
                 strMahasiswa[i][1] = kelas; // kelas
                 strMahasiswa[i][2] = NIM; // nim
                 strMahasiswa[i][3] = nomorTlp; // no telp
-                intMahasiswa[i][0] = semesterYgDilewati; // semester yg dilewati
-                intMahasiswa[i][1] = jmlAlpha; // jml alpha
-                intMahasiswa[i][2] = jmlKompen; // poin kompen
                 intMahasiswa[i][3] = validSiswa; // validasi
                 strMahasiswa[i][4] = pekerjaan; // pekerjaan siswa
                 strMahasiswa[i][5] = username;  //username siswa
@@ -412,11 +394,6 @@ public class lamanawal {
         System.out.print("Masukkan Nomor Telepon \t\t\t: ");
         strMahasiswa[edit][3] = sc.next();
 
-        System.out.print("Masukkan Semester Yang Dilewati \t: ");
-        intMahasiswa[edit][0] = sc.nextByte();
-
-        System.out.print("Masukkan jumlah alpha \t\t\t: ");
-        intMahasiswa[edit][1] = sc.nextShort();
 
         // jumlah kompen jumlah alpha semester yg dilewati
         intMahasiswa[edit][2] = intMahasiswa[edit][1] * 2 * intMahasiswa[edit][0];
@@ -552,6 +529,96 @@ public class lamanawal {
         }
         return lagi;
     }
+
+    static void PerhitunganKompen() {
+        perhitungan();
+    }
+
+    static void perhitungan() {
+        int totAlphaKompen = 0;
+        Scanner sc = new Scanner(System.in);
+        int alpha, semester, totAlpha1;
+        char answer = 'y';
+
+        do {
+            for (int i = 0; i < intMahasiswa.length; i++) {
+                System.out.print("Mahasiswa ke - " + (i+1));
+                System.out.println();
+                System.out.print("Nama : " + strMahasiswa[i][0]);
+                System.out.println();
+                System.out.printf("================================================================\n");
+                System.out.print("Masukkan Jumlah Alpha \t\t\t: ");
+                alpha = sc.nextInt();
+                intMahasiswa[i][1] = alpha;
+                System.out.printf("================================================================\n");
+                System.out.print("Masukkan Jumlah Semester Yang Dilewati \t: ");
+                semester = sc.nextInt();
+                intMahasiswa[i][0] = semester;
+                System.out.printf("================================================================\n");
+
+                totAlpha1 = alpha * 2;
+
+            for (int j = 0; j < intMahasiswa[0].length; j++) {
+            if (semester > 0) {
+                if (semester == 1) {
+                    totAlphaKompen = totAlpha1 * 2;
+                    System.out.println("Total Kompen \t\t: " + totAlphaKompen);
+                    intMahasiswa[i][2] = totAlphaKompen;
+                    break;
+                } else if (semester == 2) {
+                    totAlphaKompen = totAlpha1 * 4;
+                    System.out.println("Total Kompen \t\t: " + totAlphaKompen);
+                    intMahasiswa[i][2] = totAlphaKompen;
+                    break;
+                } else if (semester == 3 ) {
+                    totAlphaKompen = totAlpha1 * 8;
+                    System.out.println("Total Kompen \t\t: " + totAlphaKompen);
+                    intMahasiswa[i][2] = totAlphaKompen;
+                    break;
+                } else if (semester == 4) {
+                    totAlphaKompen = totAlpha1 * 16;
+                    System.out.println("Total Kompen \t\t: " + totAlphaKompen);
+                    intMahasiswa[i][2] = totAlphaKompen;
+                    break;
+                } else  if (semester == 5) {
+                    totAlphaKompen = totAlpha1 * 32;
+                    System.out.println("Total Kompen \t\t: " + totAlphaKompen);
+                    intMahasiswa[i][2] = totAlphaKompen;
+                    break;
+                } else if (semester == 6) {
+                    totAlphaKompen = totAlpha1 * 64;
+                    System.out.println("Total Kompen \t\t: " + totAlphaKompen);
+                    intMahasiswa[i][2] = totAlphaKompen;
+                    break;
+                } else if (semester == 7) {
+                    totAlphaKompen = totAlpha1 * 128;
+                    System.out.println("Total Kompen \t\t: " + totAlphaKompen);
+                    intMahasiswa[i][2] = totAlphaKompen;
+                    break;
+                } else {
+                    System.out.println("Mohon Maaf Semester Yang Anda Masukkan Salah");
+                }
+                
+            } else if (semester == 0) {
+                System.out.println("Total Alpha \t\t: " + totAlpha1);
+                intMahasiswa[i][2] = totAlpha1;
+                break;
+                }
+    
+            }
+            System.out.print("Apakah ingin menambahkan lagi? (y/n) : ");
+            answer = sc.next().charAt(0);
+            if (answer == 'y' || answer == 'Y') {
+                continue;
+            } else {
+                break;
+            }
+        }    
+        
+    }
+        while (answer == 'Y' || answer == 'y');
+    }
+
 
     static void Peraturan() {
         Scanner sc = new Scanner(System.in);
