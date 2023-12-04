@@ -6,9 +6,11 @@ public class lamanawal {
     //Data Array
     static String strMahasiswa[][] = new String[20][7];
     static int intMahasiswa[][] = new int[20][4];
+
     static String listKompen[][] = new String[6][3];
     static String listPeraturan[] = new String[maxPeraturan];
     static int poinPelanggaran[] = new int[maxPeraturan];
+    
     // Variabel data sementara
     static String namaMhs, NIM, kelas,
             nomorTlp, pekerjaan,username,password;
@@ -317,10 +319,10 @@ public class lamanawal {
         System.out.println("2. Tidak ada");
         System.out.print("Pilih (1/2) \t\t\t\t: ");
         validSiswa = sc.nextInt();
-
+        sc.nextLine();
         if (validSiswa == 1) {
             System.out.print("Pekerjaan yang dikerjakan \t\t: ");
-            pekerjaan = sc.next();
+            pekerjaan = sc.nextLine();
         } else {
             pekerjaan = "-";
         }
@@ -406,10 +408,10 @@ public class lamanawal {
         System.out.println("2. Tidak ada");
         System.out.print("Pilih (1/2) \t\t\t\t: ");
         intMahasiswa[edit][3] = sc.nextInt();
-
+        sc.nextLine();
         if (intMahasiswa[edit][3] == 1) {
             System.out.print("Pekerjaan yang dikerjakan \t\t: ");
-            strMahasiswa[edit][4] = sc.next();
+            strMahasiswa[edit][4] = sc.nextLine();
         } else {
             strMahasiswa[edit][4] = "-";
         }
