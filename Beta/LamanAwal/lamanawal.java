@@ -6,6 +6,7 @@ public class lamanawal {
     //Data Array
     static String strMahasiswa[][] = new String[20][7];
     static int intMahasiswa[][] = new int[20][4];
+    static String listKompen[][] = new String[6][3];
     static String listPeraturan[] = new String[maxPeraturan];
     static int poinPelanggaran[] = new int[maxPeraturan];
     // Variabel data sementara
@@ -124,14 +125,16 @@ public class lamanawal {
                     break;
                 case '3':
                     PerhitunganKompen();
+                    break;
                 case '4':
-                    // listKompen(); //
+                    listKompen();
                     break;
                 case '5':
                     // validasi(); //
                     break;
                 case '6':
                     Peraturan();
+                    break;
                 case '7':
                 System.out.println("\tAnda berhasil logout.");
                 return;
@@ -619,7 +622,44 @@ public class lamanawal {
         while (answer == 'Y' || answer == 'y');
     }
 
+    static void listKompen() {
+        String listKompen[][] = inputListKompen();
+        outputListKompen(listKompen);
+    }
 
+    static String[][] inputListKompen() {
+        Scanner sc = new Scanner(System.in);
+        String hari[] = { "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu" };
+
+        for (int i = 0; i < hari.length; i++) {
+            System.out.println("Tambah pekerjaan di hari " + hari[i]);
+            for (int j = 0, k = 0; j < listKompen[0].length; j++, k++) {
+                System.out.print("Pekerjaan "+(k+1)+" : ");
+                listKompen[i][j] = sc.nextLine();
+            }
+            System.out.println();
+            
+        }
+        return listKompen;
+    }
+
+    static void outputListKompen(String listKompen[][]) {
+        Scanner sc = new Scanner(System.in);
+        String hari[] = { "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu" };
+
+        System.out.println("--------------------");       
+        System.out.println("Daftar perkerjaan :");
+        System.out.println("--------------------");
+
+        for (int i = 0; i < listKompen.length; i++) {
+            System.out.println("List pekerjaan hari " + hari[i]);
+            for (int j = 0, k = 0; j < listKompen[0].length; j++, k++) {
+                System.out.println("Pekerjaan ke-"+(k+1)+" : "+listKompen[i][j]);
+            }
+            System.out.println();
+        }
+    }
+    
     static void Peraturan() {
         Scanner sc = new Scanner(System.in);
         int pilihan;
