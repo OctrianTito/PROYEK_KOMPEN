@@ -2,11 +2,12 @@ import java.util.Scanner;
 
 public class lamanawal {
     static Scanner sc = new Scanner (System.in);
-
+    static int maxPeraturan = 20;
     //Data Array
     static String strMahasiswa[][] = new String[20][7];
     static int intMahasiswa[][] = new int[20][4];
-
+    static String listPeraturan[] = new String[maxPeraturan];
+    static int poinPelanggaran[] = new int[maxPeraturan];
     // Variabel data sementara
     static String namaMhs, NIM, kelas,
             nomorTlp, pekerjaan,username,password;
@@ -105,7 +106,7 @@ public class lamanawal {
             System.out.println("\t\t2.Data Mahasiswa\t\t ");
             System.out.println("\t\t3.Perhitungan Kompen\t\t ");
             System.out.println("\t\t4.List Kompen\t\t ");
-            System.out.println("\t\t5.Validasi Komepn\t\t ");
+            System.out.println("\t\t5.Validasi Kompen\t\t ");
             System.out.println("\t\t6.Peraturan\t\t ");
             System.out.println("\t\t7.Logout\t\t ");
             
@@ -121,6 +122,16 @@ public class lamanawal {
                 case '2':
                     dataMahasiwa();
                     break;
+                case '3':
+                    // perhitunganKompen(); //
+                case '4':
+                    // listKompen(); //
+                    break;
+                case '5':
+                    // validasi(); //
+                    break;
+                case '6':
+                    Peraturan();
                 case '7':
                 System.out.println("\tAnda berhasil logout.");
                 return;
@@ -540,6 +551,128 @@ public class lamanawal {
             }
         }
         return lagi;
+    }
+
+    static void Peraturan() {
+        Scanner sc = new Scanner(System.in);
+        int pilihan;
+        do {
+            System.out.println("======== Peraturan ========");
+            System.out.println("1. Tambah Peraturan");
+            System.out.println("2. Lihat Peraturan");
+            System.out.println("3. Ubah Peraturan");
+            System.out.println("4. Hapus Peraturan");
+            System.out.println("5. Kembali Ke Menu Awal");
+            System.out.println("0. Keluar");
+            System.out.print("Pilih Menu (0-5) : ");
+            pilihan = sc.nextInt();
+
+            switch (pilihan) {
+                case 1:
+                tambahPeraturan();
+                break;
+
+                case 2:
+                lihatPeraturan();
+                break;
+
+                case 3:
+                ubahPeraturan();
+                break;
+
+                case 4:
+                hapusPeraturan();
+                break;
+
+                case 5:
+                // Kembali Ke Menu Awal Untuk Memilih Lagi //
+                break;
+
+                case 0:
+                System.out.println("Sampai Jumpa Lagi!");
+                break;
+
+                default:
+                System.out.println("Nomor yang dipilih tidak valid, Silahkan pilih lagi");
+            }
+        }
+
+        while (pilihan != 0);
+    }
+
+    static void tambahPeraturan() {
+        char tambah = 'y';
+        Scanner sc = new Scanner(System.in);
+
+        do {
+            for (int i = 0; i < maxPeraturan; i++) {
+            System.out.print("Masukkan Peraturan : ");
+            listPeraturan[i] = sc.next();
+
+            System.out.print("Masukkan Poin pelanggarannya : ");
+            poinPelanggaran[i] = sc.nextInt();
+            sc.nextLine();
+
+            System.out.print("Apakah ingin menambah peraturan lagi? (y/n) : ");
+            tambah = sc.next().charAt(0);
+            if (tambah == 'y' || tambah == 'Y') {
+                continue;
+            } else {
+                break;
+            }
+            
+        }
+        }
+
+        while (tambah == 'y' || tambah == 'Y');
+    }
+
+    static void lihatPeraturan() {
+        System.out.printf("================================================================\n");
+        System.out.println("DAFTAR PERATURAN");
+        System.out.printf("================================================================\n");
+
+        for (int i = 0; i < maxPeraturan; i++) {
+            if (listPeraturan[i] != null && poinPelanggaran[i] != 0) {
+            System.out.println((i + 1) + "." + " " + listPeraturan[i]);
+            System.out.printf("-------------------------------------------------------------\n");
+            System.out.println("Poin Pelanggaran : " + poinPelanggaran[i]);
+            System.out.printf("-------------------------------------------------------------\n");
+            
+            } else {
+                continue;
+            }
+        }
+    }
+
+    static void ubahPeraturan() {
+        Scanner sc = new Scanner(System.in);
+        int nomorPeraturan;
+
+        System.out.print("Masukkan nomor peraturan yang ingin diubah : ");
+        nomorPeraturan = sc.nextInt();
+        System.out.println();
+
+        System.out.print("Masukkan peraturan yang baru : ");
+        listPeraturan[nomorPeraturan - 1] = sc.next();
+        System.out.println();
+
+        System.out.print("Masukkan poin pelanggaran yang baru : ");
+        poinPelanggaran[nomorPeraturan - 1] = sc.nextInt();
+    }
+    static void hapusPeraturan() {
+        Scanner sc = new Scanner(System.in);
+        int nomorPeraturan;
+
+        System.out.print("Masukkan nomor peraturan yang ingin dihapus : ");
+        nomorPeraturan = sc.nextInt();
+        
+        for (int i = nomorPeraturan - 1; i < maxPeraturan - 1; i++) {
+            listPeraturan[i] = listPeraturan[i + 1];
+            poinPelanggaran[i] = poinPelanggaran[i + 1];
+
+        }
+        System.out.println("Peraturan berhasil dihapus");
     }
 
     public static void main(String[] args) {
