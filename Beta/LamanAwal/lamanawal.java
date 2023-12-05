@@ -80,8 +80,13 @@ public class lamanawal {
         for (int i = 0; i < numUsers || i < userAdmin.length; i++) {
             if (usernameInput.equals(users[i][0]) && passInput.equals(users[i][1])) {
                 found = true;
-                System.out.println("\tAnda berhasil login!.");
-                break;
+                System.out.println("------------------------------------------------");
+                System.out.println("================================================");
+                System.out.println("\tAnda berhasil Login sebagai Mahasiswa");
+                System.out.println("================================================");
+                System.out.println("------------------------------------------------");
+                
+                lamanMahasiswa();
             } else if (usernameInput.equals(userAdmin[i][0]) && passInput.equals(userAdmin[i][1])) {
                 found = true;
                 System.out.println("------------------------------------------------");
@@ -101,14 +106,15 @@ public class lamanawal {
                 System.out.println("------------------------------------------------");
 
                 LamanDosen();
-
             }
 
-        }
-        if (!found) {
+            
+            if (!found) {
             System.out.println();
             System.out.println("      Username atau password tidak terdaftar");
             System.out.println("\tCoba Registrasi dahulu");
+            return;
+        }
         }
     }
     // Fungsi Menu Mahasiswa
@@ -162,10 +168,9 @@ public class lamanawal {
             System.out.println("\t\t1.Absensi Mahasiswa\t\t ");
             System.out.println("\t\t2.List Kompen\t\t ");
             System.out.println("\t\t3.Point Pelanggaran\t\t ");
-            System.out.println("\t\t4.Validasi Kompen\t\t ");
-            System.out.println("\t\t5.Logout\t\t ");
+            System.out.println("\t\t4.Logout\t\t ");
 
-            System.out.print("\t\tpilih (1/2/3/4/5) :");
+            System.out.print("\t\tpilih (1/2/3/4) :");
             char plhadmn = sc.next().charAt(0);
             sc.nextLine(); // Membersihkan newline dari buffer masukan
             System.out.println("------------------------------------------------");
@@ -181,15 +186,12 @@ public class lamanawal {
                     PointPelanggaran();
                 break;
                 case '4':
-                    Validasi();
-                    break;
-                case '5':
                     System.out.println("\tAnda berhasil logout.");
                     return;
                 default:
                     break;
             }
-            if (plhadmn != '5') {
+            if (plhadmn != '4') {
                 System.out.print("Ingin Kembali ke laman DOSEN ? (ya/tidak) : ");
             }
         } while (sc.next().equalsIgnoreCase("ya"));
@@ -1070,7 +1072,6 @@ public class lamanawal {
         userdosen[0][1] = "Dosen145"; // Password Dosen 1
         userdosen[1][0] = "Dosen2"; // Username Dosen 2
         userdosen[1][1] = "Dosen245"; // Password Dosen 2
-
         // Contoh data 1
         strMahasiswa[0][0] = "Muhammad Afif Al Ghifari"; // nama
         strMahasiswa[0][1] = "TI-1H"; // kelas
@@ -1102,20 +1103,20 @@ public class lamanawal {
         intMahasiswa[2][4] = 0; // Point Pelanggaran
 
         // Contoh data 4
-        strMahasiswa[3][0] = "arif"; // nama
+        strMahasiswa[3][0] = "Muhammad Rafi Rajendra"; // nama
         strMahasiswa[3][1] = "TI-1H"; // kelas
-        strMahasiswa[3][2] = "235445"; // nim
-        strMahasiswa[3][3] = "0854753"; // no telp
-        intMahasiswa[3][1] = 2;// alpha
+        strMahasiswa[3][2] = "2341652391"; // nim
+        strMahasiswa[3][3] = "085475325749"; // no telp
+        intMahasiswa[3][1] = 0;// alpha
         intMahasiswa[3][3] = 1; // validasi
         strMahasiswa[3][4] = "tes"; // pekerjaan siswa
         intMahasiswa[3][4] = 0; // Point Pelanggaran
 
         // Contoh data 5
-        strMahasiswa[4][0] = "asa"; // nama
+        strMahasiswa[4][0] = "Lutfiyyah Adzka"; // nama
         strMahasiswa[4][1] = "TI-1H"; // kelas
-        strMahasiswa[4][2] = "235445"; // nim
-        strMahasiswa[4][3] = "0854753"; // no telp
+        strMahasiswa[4][2] = "234182531"; // nim
+        strMahasiswa[4][3] = "085475347823"; // no telp
         intMahasiswa[4][1] = 0;// alpha
         intMahasiswa[4][3] = 1; // validasi
         strMahasiswa[4][4] = "tes"; // pekerjaan siswa
