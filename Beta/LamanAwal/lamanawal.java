@@ -809,6 +809,20 @@ public class lamanawal {
         return listKompen;
     }
 
+    static void pilihPekerjaan() {
+        outputListKompen();
+        int pilihKompen, pilihHari;
+
+        System.out.print("Pilih Hari Pekerjaan : ");
+        pilihHari = sc.nextInt();
+        System.out.print("Pilih Nomor Pekerjaan : ");
+        pilihKompen = sc.nextInt();
+
+        int kompenYgDipilih = pilihKompen - 1;
+        int hariYgDipilih = pilihHari - 1;
+        System.out.println("\nPekerjaan yang dipilih \t\t\t\t: " + listKompen[kompenYgDipilih][hariYgDipilih] + "\n");
+    }
+    
     static void outputListKompen() {
 
         String hari[] = { "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu" };
@@ -825,7 +839,8 @@ public class lamanawal {
             System.out.println();
         }
     }
-
+    
+    
     static void Validasi() {
 
         tampilDataMahasiswa();
