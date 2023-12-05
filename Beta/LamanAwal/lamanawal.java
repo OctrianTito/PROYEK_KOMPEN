@@ -621,28 +621,32 @@ public class lamanawal {
             // Pengecekan data Mahasiswa
             System.out.print("Masukkan Nama Mahasiswa : ");
             String namaMhsInput = sc.nextLine();
-            System.out.print("Masukkan Kelas Mahasiswa : ");
+            System.out.print("Masukkan Kelas Mahasiswa dengan format (TI-1H/SIB-1H) : ");
             String kelasInput = sc.nextLine();
-            boolean dataExists = false;
+            
             for (int i = 0; i < strMahasiswa.length; i++) {
                 if (namaMhsInput.equals(strMahasiswa[i][0]) && kelasInput.equals(strMahasiswa[i][1])) {
-                    dataExists = true;
-                    break;
-                }
-            }
-
-            if (dataExists) {
-                System.out.println("Data mahasiswa dengan nama dan kelas tersebut sudah ada.");
-            } else {
-                users[numUsers][1] = usernameInput;
-                users[numUsers][2] = passInput;
-                users[numUsers][0] = namaMhsInput;
+                users[numUsers][0] = usernameInput;
+                users[numUsers][1] = passInput;
+                users[numUsers][2] = namaMhsInput;
                 strMahasiswa[numUsers][5] = usernameInput;
                 strMahasiswa[numUsers][6] = passInput;
                 numUsers++;
 
                 System.out.println("Registrasi berhasil!");
+
+
+                    break;
+                
+                }
+                if (!namaMhsInput.equals(strMahasiswa[i][0]) && !kelasInput.equals(strMahasiswa[i][1])){
+                    System.out.println("Nama dan Kelas Anda tidak sesuai Hubungi Admin");
+                    break;
+                }
+                    
+                
             }
+
         }
     }
 
@@ -772,7 +776,7 @@ public class lamanawal {
 
     static void pembayaran(int totAlphaKompen) {
         do {
-            Scanner sc = new Scanner(System.in);
+            
             int jmlYangDikerjakan;
             String konfirmasi;
             System.out.printf("----------------------------------------------------------------\n");
@@ -985,8 +989,7 @@ public class lamanawal {
 
     static void tambahPeraturan() {
         char tambah = 'y';
-        Scanner sc = new Scanner(System.in);
-
+        
         do {
             for (int i = 0; i < maxPeraturan; i++) {
                 System.out.print("Masukkan Peraturan : ");
@@ -1060,6 +1063,7 @@ public class lamanawal {
     }
 
     public static void main(String[] args) {
+
         // Data Username and Password Admin
         userAdmin[0][0] = "Admin1"; // Username Admin1
         userAdmin[0][1] = "Admin45"; // Password Admin1
@@ -1067,11 +1071,13 @@ public class lamanawal {
         userAdmin[1][1] = "Admin245"; // Password Admin2
         userAdmin[2][0] = "Admin3"; // Username Admin3
         userAdmin[2][1] = "Admin345"; // Password Admin3
+
         // Data Username and Password Dosen
         userdosen[0][0] = "Dosen1"; // Username Dosen 1
         userdosen[0][1] = "Dosen145"; // Password Dosen 1
         userdosen[1][0] = "Dosen2"; // Username Dosen 2
         userdosen[1][1] = "Dosen245"; // Password Dosen 2
+
         // Contoh data 1
         strMahasiswa[0][0] = "Muhammad Afif Al Ghifari"; // nama
         strMahasiswa[0][1] = "TI-1H"; // kelas
@@ -1154,7 +1160,7 @@ public class lamanawal {
                     break;
             }
 
-            // dataMahasiwa();
+            
         } while (kembali);
     }
 }
