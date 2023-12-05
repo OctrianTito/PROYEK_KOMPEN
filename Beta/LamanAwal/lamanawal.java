@@ -20,7 +20,7 @@ public class lamanawal {
     static String namaMhs, NIM, kelas,
             nomorTlp, pekerjaan, username, password;
     static int jmlKompen, validSiswa,
-            semesterYgDilewati, jmlAlpha;
+            semesterYgDilewati, jmlAlpha,pointplnggaran;
 
     static void defaultTempVar() {
         namaMhs = null;
@@ -34,6 +34,7 @@ public class lamanawal {
         jmlAlpha = 0;
         username = null;
         password = null;
+        pointplnggaran = 0;
     }
 
     // variabel pemilihan
@@ -463,6 +464,7 @@ public class lamanawal {
                 strMahasiswa[i][4] = pekerjaan; // pekerjaan siswa
                 strMahasiswa[i][5] = username; // username siswa
                 strMahasiswa[i][6] = password; // password siswa
+                intMahasiswa[i][4] = pointplnggaran; //Point Pelanggaran siswa
 
                 System.out.println("\nBerhasil menambahkan data\n");
 
@@ -495,6 +497,7 @@ public class lamanawal {
 
                 System.out.println("   Status kompen \t\t= " + statusKompen);
                 System.out.println("   Pekerjaan yang dikerjkan \t= " + strMahasiswa[i][4]);
+                System.out.println("   Point Pelanggaran = "+intMahasiswa[i][4]);
 
                 System.out.println();
             }
