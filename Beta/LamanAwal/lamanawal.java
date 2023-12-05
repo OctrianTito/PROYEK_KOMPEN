@@ -1,7 +1,5 @@
 import java.util.Scanner;
 
-import javax.sound.midi.Soundbank;
-
 public class lamanawal {
     static Scanner sc = new Scanner(System.in);
     static int maxPeraturan = 20;
@@ -112,7 +110,46 @@ public class lamanawal {
             System.out.println("\tCoba Registrasi dahulu");
         }
     }
+    // Fungsi Menu Mahasiswa
+    static void lamanMahasiswa() {
+        do {
+            System.out.println("================================================");
+            System.out.println("------------------------------------------------");
+            System.out.println("\t\t LAMAN MAHASISWA ");
+            System.out.println("------------------------------------------------");
+            System.out.println("================================================");
+            System.out.println("\t\t1.Informasi Jumlah Kompen\t\t ");
+            System.out.println("\t\t2.List Kompen\t\t ");
+            System.out.println("\t\t3.Pembayaran Kompen\t\t ");
+            System.out.println("\t\t4.Logout\t\t ");
 
+            System.out.print("\t\tpilih (1/2/3/4) :");
+            char plhMenuMhs = sc.next().charAt(0);
+            sc.nextLine(); // Membersihkan newline dari buffer masukan
+            System.out.println("------------------------------------------------");
+            System.out.println("================================================");
+            switch (plhMenuMhs) {
+                case '1':
+
+                    break;
+                case '2':
+                    pilihPekerjaan();
+                    break;
+                case '3':
+                    pembayaran();
+                    break;
+                case '4':
+                    System.out.println("\tAnda berhasil logout.");
+                    return;
+                default :
+                    break;
+            }
+             if (plhMenuMhs != '4') {
+                System.out.print("Ingin Kembali ke laman DOSEN ? (ya/tidak) : ");
+            }
+        } 
+        while (sc.next().equalsIgnoreCase("ya")); 
+    }
     // Fungsi Menu Dosen
     static void LamanDosen() {
         do {
@@ -123,7 +160,7 @@ public class lamanawal {
             System.out.println("================================================");
             System.out.println("\t\t1.Absensi Mahasiswa\t\t ");
             System.out.println("\t\t2.List Kompen\t\t ");
-            System.out.println("\t\t3.Point (null)\t\t ");
+            System.out.println("\t\t3.Point Pelanggaran\t\t ");
             System.out.println("\t\t4.Validasi Kompen\t\t ");
             System.out.println("\t\t5.Logout\t\t ");
 
@@ -366,25 +403,6 @@ public class lamanawal {
         nomorTlp = sc.next();
 
         jmlAlpha = 0;
-
-        /*
-         * System.out.print("Masukkan Semester Yang Dilewati \t: ");
-         * semesterYgDilewati = sc.nextInt();
-         * 
-         * System.out.print("Masukkan jumlah alpha \t\t\t: ");
-         * jmlKompen = jmlAlpha * 2 * semesterYgDilewati;
-         * 
-         * System.out.println("Status kompen \t\t\t\t: ");
-         * System.out.println("1. Ada");
-         * System.out.println("2. Tidak ada");
-         * System.out.print("Pilih (1/2) \t\t\t\t: ");
-         * sc.nextLine();
-         * if (validSiswa == 1) {
-         * System.out.print("Pekerjaan yang dikerjakan \t\t: ");
-         * pekerjaan = sc.nextLine();
-         * } else {
-         * }
-         */
 
         validSiswa = 2;
         pekerjaan = "-";
@@ -702,11 +720,49 @@ public class lamanawal {
         }  while (answer == 'Y' || answer == 'y');  
     }
 
+    static void pembayaran(int totAlphaKompen) {
+        do {
+            Scanner sc = new Scanner(System.in);
+            int jmlYangDikerjakan;
+            String konfirmasi;
+            System.out.printf("----------------------------------------------------------------\n");
+            System.out.print("Apakah anda ingin membayar kompen? (y/t) : ");
+            konfirmasi = sc.next();
+            System.out.printf("----------------------------------------------------------------\n");
+
+            if (konfirmasi.equalsIgnoreCase("y")) {
+                System.out.print("Masukkan jumlah kompen yang telah anda kerjakan : ");
+                jmlYangDikerjakan = sc.nextInt();
+
+                if (jmlYangDikerjakan <= totAlphaKompen) {
+                    totAlphaKompen -= jmlYangDikerjakan;
+                    System.out.printf("----------------------------------------------------------------\n");
+                    System.out.print("Sisa total kompen anda adalah : " + totAlphaKompen + "\n");
+                } else {
+                    System.out.printf("----------------------------------------------------------------\n");
+                    System.out.print("Sisa total kompen anda adalah : " + totAlphaKompen + "\n");
+                }
+            } else if (konfirmasi.equalsIgnoreCase("t")) {
+                System.out.print("Sisa total kompen anda adalah : " + totAlphaKompen + "\n");
+                System.out.println();
+                System.out.printf("----------------------------------------------------------------\n");
+                System.out.println("Jangan lupa untuk membayar sisa kompen anda!");
+                break;
+            }
+        }
+        
+        while (totAlphaKompen > 0);
+        if (totAlphaKompen == 0) {
+            System.out.printf("----------------------------------------------------------------\n");
+            System.out.println("Terimakasih Telah Membayar Kompen!");
+            System.out.printf("----------------------------------------------------------------\n");
+        }
+    }
+
     static void listKompen() {
         boolean runList = true;
-
         do {
-            System.out.println("============================");
+        System.out.println("============================");
             System.out.println("===== Daftar Pekerjaan =====");
             System.out.println("============================\n");
             System.out.println("Pilih aksi \n");
