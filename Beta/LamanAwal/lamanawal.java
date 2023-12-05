@@ -5,7 +5,7 @@ public class lamanawal {
     static int maxPeraturan = 20;
     // Data Array
     static String strMahasiswa[][] = new String[20][7];
-    static int intMahasiswa[][] = new int[20][4];
+    static int intMahasiswa[][] = new int[20][5];
 
     static String listKompen[][] = new String[6][3];
     static String listPeraturan[] = new String[maxPeraturan];
@@ -136,7 +136,7 @@ public class lamanawal {
                     pilihPekerjaan();
                     break;
                 case '3':
-                    pembayaran();
+                    pembayaran(plhMenuMhs);
                     break;
                 case '4':
                     System.out.println("\tAnda berhasil logout.");
@@ -176,9 +176,9 @@ public class lamanawal {
                 case '2':
                     listKompen();
                     break;
-                // case '3':
-
-                // break;
+                case '3':
+                    PointPelanggaran();
+                break;
                 case '4':
                     Validasi();
                     break;
@@ -226,6 +226,51 @@ public class lamanawal {
                         System.out.print("Masukkan Jumlah Alpha : ");
                         int hmlalp = sc.nextInt();
                         intMahasiswa[k][1] += hmlalp;
+                    }
+                }
+                break;
+            }
+        }
+    }
+
+     //Fungsi Point Pelanggaran
+     static void PointPelanggaran() {
+        System.out.println("================================================");
+        System.out.println("------------------------------------------------");
+        System.out.println("\t\t Point Pelanggaran");
+        System.out.println("------------------------------------------------");
+        System.out.println("================================================");
+        System.out.println("================================================");
+        System.out.print("Pilih kelas : ");
+        String plhks = sc.next();
+        System.out.println("================================================");
+
+        for (int i = 0; i < strMahasiswa.length; i++) {
+            if (plhks.equalsIgnoreCase(strMahasiswa[i][1])) {
+                System.out.println("Berikut Daftar Nama Mahasiswa");
+                System.out.println("================================================");
+
+                for (int j = 0; j < strMahasiswa.length; j++) {
+                    if (plhks.equalsIgnoreCase(strMahasiswa[j][1])) {
+                        System.out.println(strMahasiswa[j][0]);
+                    }
+                }
+
+                System.out.println("================================================");
+                System.out.print("Pilih Nama Mahasiswa : ");
+                String plhnm = sc.next();
+
+                for (int k = 0; k < strMahasiswa.length; k++) {
+                    if (plhnm.equalsIgnoreCase(strMahasiswa[k][0])) {
+                        System.out.println("Berikut Peraturan dan Point Pelanggaran");
+                        System.out.println("================================================");
+                        lihatPeraturan();
+                        System.out.println("================================================");
+                        System.out.print("Masukkan Jumlah Poin Pelanggaran "+strMahasiswa[k][0]+" : ");
+                        int poin = sc.nextInt();
+                        intMahasiswa[k][4] += poin;
+
+                        System.out.println("Point pelanggaran "+strMahasiswa[k][0]+" :"+intMahasiswa[k][4]);
                     }
                 }
                 break;
@@ -1031,6 +1076,7 @@ public class lamanawal {
         intMahasiswa[0][1] = 0;// alpha
         intMahasiswa[0][3] = 1; // validasi
         strMahasiswa[0][4] = "tes"; // pekerjaan siswa
+        intMahasiswa[0][4] = 0; // Point Pelanggaran
 
         // Contoh data 2
         strMahasiswa[1][0] = "Fali Irham Maulana"; // nama
@@ -1040,6 +1086,7 @@ public class lamanawal {
         intMahasiswa[1][1] = 0;// alpha
         intMahasiswa[1][3] = 1; // validasi
         strMahasiswa[1][4] = "-"; // pekerjaan siswa
+        intMahasiswa[1][4] = 0; // Point Pelanggaran
 
         // Contoh data 3
         strMahasiswa[2][0] = "Octrian Adiluhung Tito Putra"; // nama
@@ -1049,6 +1096,7 @@ public class lamanawal {
         intMahasiswa[2][1] = 0; // alpha
         intMahasiswa[2][3] = 1; // validasi
         strMahasiswa[2][4] = "tes"; // pekerjaan siswa
+        intMahasiswa[2][4] = 0; // Point Pelanggaran
 
         // Contoh data 4
         strMahasiswa[3][0] = "arif"; // nama
@@ -1058,6 +1106,7 @@ public class lamanawal {
         intMahasiswa[3][1] = 2;// alpha
         intMahasiswa[3][3] = 1; // validasi
         strMahasiswa[3][4] = "tes"; // pekerjaan siswa
+        intMahasiswa[3][4] = 0; // Point Pelanggaran
 
         // Contoh data 5
         strMahasiswa[4][0] = "asa"; // nama
@@ -1067,6 +1116,11 @@ public class lamanawal {
         intMahasiswa[4][1] = 0;// alpha
         intMahasiswa[4][3] = 1; // validasi
         strMahasiswa[4][4] = "tes"; // pekerjaan siswa
+        intMahasiswa[4][4] = 0; // Point Pelanggaran
+
+        // Contoh List peraturan dan pointnya 
+        listPeraturan[0]="Alpha > 48 jam";
+        poinPelanggaran[0]=4;
 
         char plh;
         int numUsers = 0; // Untuk melacak jumlah pengguna yang sudah diregistrasi
