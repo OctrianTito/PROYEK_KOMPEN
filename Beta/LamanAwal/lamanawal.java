@@ -603,87 +603,103 @@ public class lamanawal {
     }
 
     static void perhitungan() {
+
         int totAlphaKompen = 0;
-
-        int semester, totAlpha1;
         char answer = 'y';
-
         do {
-            for (int i = 0; i < intMahasiswa.length; i++) {
-                int alpha = intMahasiswa[i][1];
-
-                System.out.println();
-                System.out.print("Nama : " + strMahasiswa[i][0]);
-                System.out.println();
-                System.out.printf("================================================================\n");
-                System.out.print("Jumlah Alpha \t\t\t: " + alpha);
-                intMahasiswa[i][1] = alpha;
-                System.out.printf("\n================================================================\n");
-                System.out.print("Masukkan Jumlah Semester Yang Dilewati \t: ");
-                semester = sc.nextInt();
-                intMahasiswa[i][0] = semester;
-                System.out.printf("================================================================\n");
-
-                totAlpha1 = alpha * 2;
-
-                for (int j = 0; j < intMahasiswa[0].length; j++) {
-                    if (semester > 0) {
-                        if (semester == 1) {
-                            totAlphaKompen = totAlpha1 * 2;
-                            System.out.println("Total Kompen \t\t: " + totAlphaKompen);
-                            intMahasiswa[i][2] = totAlphaKompen;
-                            break;
-                        } else if (semester == 2) {
-                            totAlphaKompen = totAlpha1 * 4;
-                            System.out.println("Total Kompen \t\t: " + totAlphaKompen);
-                            intMahasiswa[i][2] = totAlphaKompen;
-                            break;
-                        } else if (semester == 3) {
-                            totAlphaKompen = totAlpha1 * 8;
-                            System.out.println("Total Kompen \t\t: " + totAlphaKompen);
-                            intMahasiswa[i][2] = totAlphaKompen;
-                            break;
-                        } else if (semester == 4) {
-                            totAlphaKompen = totAlpha1 * 16;
-                            System.out.println("Total Kompen \t\t: " + totAlphaKompen);
-                            intMahasiswa[i][2] = totAlphaKompen;
-                            break;
-                        } else if (semester == 5) {
-                            totAlphaKompen = totAlpha1 * 32;
-                            System.out.println("Total Kompen \t\t: " + totAlphaKompen);
-                            intMahasiswa[i][2] = totAlphaKompen;
-                            break;
-                        } else if (semester == 6) {
-                            totAlphaKompen = totAlpha1 * 64;
-                            System.out.println("Total Kompen \t\t: " + totAlphaKompen);
-                            intMahasiswa[i][2] = totAlphaKompen;
-                            break;
-                        } else if (semester == 7) {
-                            totAlphaKompen = totAlpha1 * 128;
-                            System.out.println("Total Kompen \t\t: " + totAlphaKompen);
-                            intMahasiswa[i][2] = totAlphaKompen;
-                            break;
-                        } else {
-                            System.out.println("Mohon Maaf Semester Yang Anda Masukkan Salah");
+            System.out.println("================================================");
+            System.out.println("------------------------------------------------");
+            System.out.println("\t\t Perhitungan Kompen ");
+            System.out.println("------------------------------------------------");
+            System.out.println("================================================");
+            System.out.print("Pilih kelas : ");
+            String plhks = sc.next();
+            System.out.println("================================================");
+            for (int i = 0; i < strMahasiswa.length; i++) {
+                if (plhks.equalsIgnoreCase(strMahasiswa[i][1])) {
+                    System.out.println("Berikut Daftar Nama Mahasiswa");
+                    System.out.println("================================================");
+    
+                    for (int j = 0; j < strMahasiswa.length; j++) {
+                        if (plhks.equalsIgnoreCase(strMahasiswa[j][1])) {
+                            System.out.println(strMahasiswa[j][0]);
                         }
-
-                    } else if (semester == 0) {
-                        System.out.println("Total Alpha \t\t: " + totAlpha1);
-                        intMahasiswa[i][2] = totAlpha1;
-                        break;
                     }
+    
+                    System.out.println("================================================");
+                    System.out.print("Pilih Nama Mahasiswa : ");
+                    String plhnm = sc.next();
 
-                }
-                System.out.print("Apakah ingin menambahkan lagi? (y/n) : ");
-                answer = sc.next().charAt(0);
-                if (answer == 'y' || answer == 'Y') {
-                    continue;
-                } else {
+                    int semester, totAlpha1 ;
+
+                    for (int k = 0; k < strMahasiswa.length; k++) {
+                        if (plhnm.equalsIgnoreCase(strMahasiswa[k][0])) {
+                            System.out.printf("================================================================\n");
+                            System.out.print("Masukkan Jumlah Semester Yang Dilewati "+strMahasiswa[k][0]+"\t: ");
+                            semester = sc.nextInt();
+                            intMahasiswa[k][0] = semester;
+                            System.out.printf("================================================================\n");
+                            
+                            totAlpha1 = intMahasiswa[k][1]* 2;
+
+                            if (semester > 0) {
+                                if (semester == 1) {
+                                    totAlphaKompen = totAlpha1 * 2;
+                                    System.out.println("Total Kompen \t\t: " + totAlphaKompen);
+                                    intMahasiswa[k][2] = totAlphaKompen;
+                                    break;
+                                } else if (semester == 2) {
+                                    totAlphaKompen = totAlpha1 * 4;
+                                    System.out.println("Total Kompen \t\t: " + totAlphaKompen);
+                                    intMahasiswa[k][2] = totAlphaKompen;
+                                    break;
+                                } else if (semester == 3 ) {
+                                    totAlphaKompen = totAlpha1 * 8;
+                                    System.out.println("Total Kompen \t\t: " + totAlphaKompen);
+                                    intMahasiswa[k][2] = totAlphaKompen;
+                                    break;
+                                } else if (semester == 4) {
+                                    totAlphaKompen = totAlpha1 * 16;
+                                    System.out.println("Total Kompen \t\t: " + totAlphaKompen);
+                                    intMahasiswa[k][2] = totAlphaKompen;
+                                    break;
+                                } else  if (semester == 5) {
+                                    totAlphaKompen = totAlpha1 * 32;
+                                    System.out.println("Total Kompen \t\t: " + totAlphaKompen);
+                                    intMahasiswa[k][2] = totAlphaKompen;
+                                    break;
+                                } else if (semester == 6) {
+                                    totAlphaKompen = totAlpha1 * 64;
+                                    System.out.println("Total Kompen \t\t: " + totAlphaKompen);
+                                    intMahasiswa[k][2] = totAlphaKompen;
+                                    break;
+                                } else if (semester == 7) {
+                                    totAlphaKompen = totAlpha1 * 128;
+                                    System.out.println("Total Kompen \t\t: " + totAlphaKompen);
+                                    intMahasiswa[k][2] = totAlphaKompen;
+                                    break;
+                                } else {
+                                    System.out.println("Mohon Maaf Semester Yang Anda Masukkan Salah");
+                                }
+                                
+                            } else if (semester == 0) {
+                                System.out.println("Total Alpha \t\t: " + totAlpha1);
+                                intMahasiswa[k][2] = totAlpha1;
+                                break;
+                                }
+                        }
+                    }
                     break;
                 }
             }
-
-        } while (answer == 'Y' || answer == 'y');
+            System.out.print("Apakah ingin menambahkan lagi? (y/n) : ");
+            answer = sc.next().charAt(0);
+            if (answer == 'y' || answer == 'Y') {
+                continue;
+            } else {
+                break;
+            }
+        }  while (answer == 'Y' || answer == 'y');  
     }
 
     static void listKompen() {
@@ -968,7 +984,7 @@ public class lamanawal {
         strMahasiswa[3][1] = "TI-1H"; // kelas
         strMahasiswa[3][2] = "235445"; // nim
         strMahasiswa[3][3] = "0854753"; // no telp
-        intMahasiswa[3][1] = 0;// alpha
+        intMahasiswa[3][1] = 2;// alpha
         intMahasiswa[3][3] = 1; // validasi
         strMahasiswa[3][4] = "tes"; // pekerjaan siswa
 
