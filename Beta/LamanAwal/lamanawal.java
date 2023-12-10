@@ -7,6 +7,20 @@ public class lamanawal {
     static String strMahasiswa[][] = new String[20][7];
     static int intMahasiswa[][] = new int[20][5];
 
+    // Posisi array
+    /*
+     * strMahasiswa[0][0]="Muhammad Afif Al Ghifari"; // nama
+     * strMahasiswa[0][1]="TI-1H"; // kelas
+     * strMahasiswa[0][2]="2341720898"; // nim
+     * strMahasiswa[0][3]="085475323796"; // no telp
+     * intMahasiswa[0][1]=0;// alpha
+     * intMahasiswa[0][2]=0;// jam kompen
+     * intMahasiswa[0][3]=2; // validasi
+     * strMahasiswa[0][4]="-"; // pekerjaan siswa
+     * strMahasiswa[0][5]="Mhs1"; // Username
+     * strMahasiswa[0][6]="Mhs1"; // Password
+     */
+
     static String listKompen[][] = new String[6][3];
     static String listPeraturan[] = new String[maxPeraturan];
     static int poinPelanggaran[] = new int[maxPeraturan];
@@ -20,7 +34,7 @@ public class lamanawal {
     static String namaMhs, NIM, kelas,
             nomorTlp, pekerjaan, username, password;
     static int jmlKompen, validSiswa,
-            semesterYgDilewati, jmlAlpha,pointplnggaran;
+            semesterYgDilewati, jmlAlpha, pointplnggaran, noMhs;
 
     static void defaultTempVar() {
         namaMhs = null;
@@ -80,12 +94,17 @@ public class lamanawal {
         for (int i = 0; i < numUsers || i < userAdmin.length; i++) {
             if (usernameInput.equals(users[i][0]) && passInput.equals(users[i][1])) {
                 found = true;
+                for (int j = 0; j < strMahasiswa.length; j++) {
+                    if (usernameInput.equals(strMahasiswa[j][5]) && passInput.equals(strMahasiswa[j][6])) {
+                        noMhs = j;
+                    }
+                }
                 System.out.println("------------------------------------------------");
                 System.out.println("================================================");
                 System.out.println("\tAnda berhasil Login sebagai Mahasiswa");
                 System.out.println("================================================");
                 System.out.println("------------------------------------------------");
-                
+
                 lamanMahasiswa();
             } else if (usernameInput.equals(userAdmin[i][0]) && passInput.equals(userAdmin[i][1])) {
                 found = true;
@@ -108,15 +127,15 @@ public class lamanawal {
                 LamanDosen();
             }
 
-            
             if (!found) {
-            System.out.println();
-            System.out.println("      Username atau password tidak terdaftar");
-            System.out.println("\tCoba Registrasi dahulu");
-            return;
-        }
+                System.out.println();
+                System.out.println("      Username atau password tidak terdaftar");
+                System.out.println("\tCoba Registrasi dahulu");
+                return;
+            }
         }
     }
+
     // Fungsi Menu Mahasiswa
     static void lamanMahasiswa() {
         do {
@@ -127,36 +146,37 @@ public class lamanawal {
             System.out.println("================================================");
             System.out.println("\t\t1.Informasi Jumlah Kompen\t\t ");
             System.out.println("\t\t2.List Kompen\t\t ");
-            System.out.println("\t\t3.Pembayaran Kompen\t\t ");
-            System.out.println("\t\t4.Logout\t\t ");
+            System.out.println("\t\t3.Logout\t\t ");
+            // System.out.println("\t\t3.Pembayaran Kompen\t\t ");
 
-            System.out.print("\t\tpilih (1/2/3/4) :");
+            System.out.print("\t\tpilih (1/2/3) :");
             char plhMenuMhs = sc.next().charAt(0);
             sc.nextLine(); // Membersihkan newline dari buffer masukan
             System.out.println("------------------------------------------------");
             System.out.println("================================================");
             switch (plhMenuMhs) {
                 case '1':
-
+                    InfoMahasiswa();
                     break;
                 case '2':
                     pilihPekerjaan();
                     break;
                 case '3':
-                    pembayaran(plhMenuMhs);
-                    break;
-                case '4':
+                    noMhs = 0;
                     System.out.println("\tAnda berhasil logout.");
+                    // pembayaran(plhMenuMhs);
                     return;
-                default :
+                // case '4':
+                // return;
+                default:
                     break;
             }
-             if (plhMenuMhs != '4') {
-                System.out.print("Ingin Kembali ke laman DOSEN ? (ya/tidak) : ");
+            if (plhMenuMhs != '4') {
+                System.out.print("Ingin Kembali ke laman Mahasiswa ? (ya/tidak) : ");
             }
-        } 
-        while (sc.next().equalsIgnoreCase("ya")); 
+        } while (sc.next().equalsIgnoreCase("ya"));
     }
+
     // Fungsi Menu Dosen
     static void LamanDosen() {
         do {
@@ -184,7 +204,7 @@ public class lamanawal {
                     break;
                 case '3':
                     PointPelanggaran();
-                break;
+                    break;
                 case '4':
                     System.out.println("\tAnda berhasil logout.");
                     return;
@@ -195,6 +215,28 @@ public class lamanawal {
                 System.out.print("Ingin Kembali ke laman DOSEN ? (ya/tidak) : ");
             }
         } while (sc.next().equalsIgnoreCase("ya"));
+    }
+
+    static void InfoMahasiswa() {
+        System.out.println("================================================");
+        System.out.println("------------------------------------------------");
+        System.out.println("\t\t Data User Mahasiswa ");
+        System.out.println("------------------------------------------------");
+        System.out.println("================================================");
+
+        System.out.println("Nama Mahasiswa \t\t\t= " + strMahasiswa[noMhs][0]);
+        System.out.println("Kelas \t\t\t\t= " + strMahasiswa[noMhs][1]);
+        System.out.println("NIM \t\t\t\t= " + strMahasiswa[noMhs][2]);
+        System.out.println("Nomor Telepon \t\t\t= " + strMahasiswa[noMhs][3]);
+        System.out.println("Semester Yang Dilewati \t\t= " + intMahasiswa[noMhs][0]);
+        System.out.println("Jumlah Alpha \t\t\t= " + intMahasiswa[noMhs][1]);
+        System.out.println("Jam Kompen \t\t\t= " + intMahasiswa[noMhs][2]);
+        String statusKompen = intMahasiswa[noMhs][3] == 1 ? "Ada" : "Tidak ada";
+
+        System.out.println("Status kompen \t\t\t= " + statusKompen);
+        System.out.println("Pekerjaan yang dikerjkan \t= " + strMahasiswa[noMhs][4]);
+
+        System.out.println();
     }
 
     // Fungsi Absensi Mahasiswa
@@ -213,31 +255,35 @@ public class lamanawal {
                 System.out.println("Berikut Daftar Nama Mahasiswa");
                 System.out.println("================================================");
 
-                for (int j = 0; j < strMahasiswa.length; j++) {
-                    if (plhks.equalsIgnoreCase(strMahasiswa[j][1])) {
-                        System.out.println(strMahasiswa[j][0]);
+                /*
+                 * for (int j = 0; j < strMahasiswa.length; j++) {
+                 * if (plhks.equalsIgnoreCase(strMahasiswa[j][1])) {
+                 * System.out.println(strMahasiswa[j][0]);
+                 * }
+                 * }
+                 * 
+                 */
+                for (int j = 0, l = 1; j < strMahasiswa.length; j++) {
+                    if (strMahasiswa[j][0] != null) {
+                        System.out.println((l++) + ". " + strMahasiswa[j][0]);
                     }
                 }
 
                 System.out.println("================================================");
                 System.out.print("Pilih Nama Mahasiswa : ");
-                String plhnm = sc.next();
-
-                for (int k = 0; k < strMahasiswa.length; k++) {
-                    if (plhnm.equalsIgnoreCase(strMahasiswa[k][0])) {
-                        System.out.println("================================================");
-                        System.out.print("Masukkan Jumlah Alpha : ");
-                        int hmlalp = sc.nextInt();
-                        intMahasiswa[k][1] += hmlalp;
-                    }
-                }
+                int plhnm = sc.nextInt();
+                System.out.println("================================================");
+                System.out.println("Nama Mahasiswa : " + strMahasiswa[plhnm - 1][0]);
+                System.out.print("Masukkan Jumlah Alpha : ");
+                int hmlalp = sc.nextInt();
+                intMahasiswa[plhnm - 1][1] += hmlalp;
                 break;
             }
         }
     }
 
-     //Fungsi Point Pelanggaran
-     static void PointPelanggaran() {
+    // Fungsi Point Pelanggaran
+    static void PointPelanggaran() {
         System.out.println("================================================");
         System.out.println("------------------------------------------------");
         System.out.println("\t\t Point Pelanggaran");
@@ -253,29 +299,26 @@ public class lamanawal {
                 System.out.println("Berikut Daftar Nama Mahasiswa");
                 System.out.println("================================================");
 
-                for (int j = 0; j < strMahasiswa.length; j++) {
-                    if (plhks.equalsIgnoreCase(strMahasiswa[j][1])) {
-                        System.out.println(strMahasiswa[j][0]);
+                for (int j = 0, l = 1; j < strMahasiswa.length; j++) {
+                    if (strMahasiswa[j][0] != null) {
+                        System.out.println((l++) + ". " + strMahasiswa[j][0]);
                     }
                 }
 
                 System.out.println("================================================");
                 System.out.print("Pilih Nama Mahasiswa : ");
-                String plhnm = sc.next();
+                int plMhs = sc.nextInt();
 
-                for (int k = 0; k < strMahasiswa.length; k++) {
-                    if (plhnm.equalsIgnoreCase(strMahasiswa[k][0])) {
-                        System.out.println("Berikut Peraturan dan Point Pelanggaran");
-                        System.out.println("================================================");
-                        lihatPeraturan();
-                        System.out.println("================================================");
-                        System.out.print("Masukkan Jumlah Poin Pelanggaran "+strMahasiswa[k][0]+" : ");
-                        int poin = sc.nextInt();
-                        intMahasiswa[k][4] += poin;
+                System.out.println("Daftar Peraturan dan Point Pelanggaran");
+                System.out.println("================================================");
+                lihatPeraturan();
+                System.out.println("================================================");
+                System.out.print("Masukkan Jumlah Poin Pelanggaran " + strMahasiswa[plMhs - 1][0] + " : ");
+                int poin = sc.nextInt();
+                intMahasiswa[plMhs - 1][4] += poin;
 
-                        System.out.println("Point pelanggaran "+strMahasiswa[k][0]+" :"+intMahasiswa[k][4]);
-                    }
-                }
+                System.out.println(
+                        "Point pelanggaran " + strMahasiswa[plMhs - 1][0] + " : " + intMahasiswa[plMhs - 1][4]);
                 break;
             }
         }
@@ -297,7 +340,7 @@ public class lamanawal {
             System.out.println("\t\t6.Peraturan\t\t ");
             System.out.println("\t\t7.Logout\t\t ");
 
-            System.out.print("\t\tpilih (1/2/3/4/5/6/) :");
+            System.out.print("\t\tpilih (1/2/3/4/5/6/7) :");
             char plhadmn = sc.next().charAt(0);
             sc.nextLine(); // Membersihkan newline dari buffer masukan
             System.out.println("------------------------------------------------");
@@ -466,7 +509,7 @@ public class lamanawal {
                 strMahasiswa[i][4] = pekerjaan; // pekerjaan siswa
                 strMahasiswa[i][5] = username; // username siswa
                 strMahasiswa[i][6] = password; // password siswa
-                intMahasiswa[i][4] = pointplnggaran; //Point Pelanggaran siswa
+                intMahasiswa[i][4] = pointplnggaran; // Point Pelanggaran siswa
 
                 System.out.println("\nBerhasil menambahkan data\n");
 
@@ -493,14 +536,16 @@ public class lamanawal {
                 System.out.println("   Nomor Telepon \t\t= " + strMahasiswa[i][3]);
                 System.out.println("   Semester Yang Dilewati \t= " + intMahasiswa[i][0]);
                 System.out.println("   Jumlah Alpha \t\t= " + intMahasiswa[i][1]);
-                System.out.println("   Jumlah Kompen \t\t= " + intMahasiswa[i][2]);
+                System.out.println("   Jam Kompen \t\t= " + intMahasiswa[i][2]);
+                // System.out.println(" Jumlah poin \t\t= " + intMahasiswa[i][4]);
 
                 String statusKompen = intMahasiswa[i][3] == 1 ? "Ada" : "Tidak ada";
 
                 System.out.println("   Status kompen \t\t= " + statusKompen);
                 System.out.println("   Pekerjaan yang dikerjkan \t= " + strMahasiswa[i][4]);
-                System.out.println("   Point Pelanggaran = "+intMahasiswa[i][4]);
-
+                System.out.println("   Point Pelanggaran  \t\t= " + intMahasiswa[i][4]);
+                System.out.println("   Username \t\t\t= " + strMahasiswa[i][5]);
+                // System.out.println(" Password \t\t\t= " + strMahasiswa[i][6]);
                 System.out.println();
             }
         }
@@ -623,28 +668,31 @@ public class lamanawal {
             String namaMhsInput = sc.nextLine();
             System.out.print("Masukkan Kelas Mahasiswa dengan format (TI-1H/SIB-1H) : ");
             String kelasInput = sc.nextLine();
-            
+
             for (int i = 0; i < strMahasiswa.length; i++) {
                 if (namaMhsInput.equals(strMahasiswa[i][0]) && kelasInput.equals(strMahasiswa[i][1])) {
-                users[numUsers][0] = usernameInput;
-                users[numUsers][1] = passInput;
-                users[numUsers][2] = namaMhsInput;
-                strMahasiswa[numUsers][5] = usernameInput;
-                strMahasiswa[numUsers][6] = passInput;
-                numUsers++;
+                    users[numUsers][0] = usernameInput;
+                    users[numUsers][1] = passInput;
+                    users[numUsers][2] = namaMhsInput;
+                    numUsers++;
 
-                System.out.println("Registrasi berhasil!");
+                    for (int j = 0; j < strMahasiswa.length; j++) {
+                        if (namaMhsInput.equalsIgnoreCase(strMahasiswa[j][0])) {
+                            strMahasiswa[j][5] = usernameInput;
+                            strMahasiswa[j][6] = passInput;
+                        }
+                    }
 
+                    System.out.println("Registrasi berhasil!");
 
                     break;
-                
+
                 }
-                if (!namaMhsInput.equals(strMahasiswa[i][0]) && !kelasInput.equals(strMahasiswa[i][1])){
+                if (!namaMhsInput.equals(strMahasiswa[i][0]) && !kelasInput.equals(strMahasiswa[i][1])) {
                     System.out.println("Nama dan Kelas Anda tidak sesuai Hubungi Admin");
                     break;
                 }
-                    
-                
+
             }
 
         }
@@ -691,78 +739,79 @@ public class lamanawal {
                 if (plhks.equalsIgnoreCase(strMahasiswa[i][1])) {
                     System.out.println("Berikut Daftar Nama Mahasiswa");
                     System.out.println("================================================");
-    
-                    for (int j = 0; j < strMahasiswa.length; j++) {
-                        if (plhks.equalsIgnoreCase(strMahasiswa[j][1])) {
-                            System.out.println(strMahasiswa[j][0]);
+
+                    for (int j = 0, l = 1; j < strMahasiswa.length; j++) {
+                        if (strMahasiswa[j][0] != null) {
+                            System.out.println((l++) + ". " + strMahasiswa[j][0]);
                         }
                     }
-    
+
                     System.out.println("================================================");
                     System.out.print("Pilih Nama Mahasiswa : ");
-                    String plhnm = sc.next();
+                    int plhnm = sc.nextInt();
+                    int nama = plhnm - 1;
 
-                    int semester, totAlpha1 ;
+                    int semester, totAlpha1;
 
-                    for (int k = 0; k < strMahasiswa.length; k++) {
-                        if (plhnm.equalsIgnoreCase(strMahasiswa[k][0])) {
-                            System.out.printf("================================================================\n");
-                            System.out.print("Masukkan Jumlah Semester Yang Dilewati "+strMahasiswa[k][0]+"\t: ");
-                            semester = sc.nextInt();
-                            intMahasiswa[k][0] = semester;
-                            System.out.printf("================================================================\n");
-                            
-                            totAlpha1 = intMahasiswa[k][1]* 2;
+                    // for (int k = 0; k < strMahasiswa.length; k++) {
 
-                            if (semester > 0) {
-                                if (semester == 1) {
-                                    totAlphaKompen = totAlpha1 * 2;
-                                    System.out.println("Total Kompen \t\t: " + totAlphaKompen);
-                                    intMahasiswa[k][2] = totAlphaKompen;
-                                    break;
-                                } else if (semester == 2) {
-                                    totAlphaKompen = totAlpha1 * 4;
-                                    System.out.println("Total Kompen \t\t: " + totAlphaKompen);
-                                    intMahasiswa[k][2] = totAlphaKompen;
-                                    break;
-                                } else if (semester == 3 ) {
-                                    totAlphaKompen = totAlpha1 * 8;
-                                    System.out.println("Total Kompen \t\t: " + totAlphaKompen);
-                                    intMahasiswa[k][2] = totAlphaKompen;
-                                    break;
-                                } else if (semester == 4) {
-                                    totAlphaKompen = totAlpha1 * 16;
-                                    System.out.println("Total Kompen \t\t: " + totAlphaKompen);
-                                    intMahasiswa[k][2] = totAlphaKompen;
-                                    break;
-                                } else  if (semester == 5) {
-                                    totAlphaKompen = totAlpha1 * 32;
-                                    System.out.println("Total Kompen \t\t: " + totAlphaKompen);
-                                    intMahasiswa[k][2] = totAlphaKompen;
-                                    break;
-                                } else if (semester == 6) {
-                                    totAlphaKompen = totAlpha1 * 64;
-                                    System.out.println("Total Kompen \t\t: " + totAlphaKompen);
-                                    intMahasiswa[k][2] = totAlphaKompen;
-                                    break;
-                                } else if (semester == 7) {
-                                    totAlphaKompen = totAlpha1 * 128;
-                                    System.out.println("Total Kompen \t\t: " + totAlphaKompen);
-                                    intMahasiswa[k][2] = totAlphaKompen;
-                                    break;
-                                } else {
-                                    System.out.println("Mohon Maaf Semester Yang Anda Masukkan Salah");
-                                }
-                                
-                            } else if (semester == 0) {
-                                System.out.println("Total Alpha \t\t: " + totAlpha1);
-                                intMahasiswa[k][2] = totAlpha1;
-                                break;
-                                }
+                    System.out.printf("================================================================\n");
+                    System.out.print("Masukkan Jumlah Semester Yang Dilewati " + strMahasiswa[nama][0] + "\t: ");
+                    semester = sc.nextInt();
+                    intMahasiswa[nama][0] = semester;
+                    System.out.printf("================================================================\n");
+
+                    totAlpha1 = intMahasiswa[nama][1] * 2;
+
+                    if (semester > 0) {
+                        if (semester == 1) {
+                            totAlphaKompen = totAlpha1 * 2;
+                            System.out.println("Total Kompen \t\t: " + totAlphaKompen);
+                            intMahasiswa[nama][2] += totAlphaKompen;
+                            break;
+                        } else if (semester == 2) {
+                            totAlphaKompen = totAlpha1 * 4;
+                            System.out.println("Total Kompen \t\t: " + totAlphaKompen);
+                            intMahasiswa[nama][2] += totAlphaKompen;
+                            break;
+                        } else if (semester == 3) {
+                            totAlphaKompen = totAlpha1 * 8;
+                            System.out.println("Total Kompen \t\t: " + totAlphaKompen);
+                            intMahasiswa[nama][2] += totAlphaKompen;
+                            break;
+                        } else if (semester == 4) {
+                            totAlphaKompen = totAlpha1 * 16;
+                            System.out.println("Total Kompen \t\t: " + totAlphaKompen);
+                            intMahasiswa[nama][2] += totAlphaKompen;
+                            break;
+                        } else if (semester == 5) {
+                            totAlphaKompen = totAlpha1 * 32;
+                            System.out.println("Total Kompen \t\t: " + totAlphaKompen);
+                            intMahasiswa[nama][2] += totAlphaKompen;
+                            break;
+                        } else if (semester == 6) {
+                            totAlphaKompen = totAlpha1 * 64;
+                            System.out.println("Total Kompen \t\t: " + totAlphaKompen);
+                            intMahasiswa[nama][2] += totAlphaKompen;
+                            break;
+                        } else if (semester == 7) {
+                            totAlphaKompen = totAlpha1 * 128;
+                            System.out.println("Total Kompen \t\t: " + totAlphaKompen);
+                            intMahasiswa[nama][2] += totAlphaKompen;
+                            break;
+                        } else {
+                            System.out.println("Mohon Maaf Semester Yang Anda Masukkan Salah");
                         }
+
+                    } else if (semester == 0) {
+                        System.out.println("Total Alpha \t\t: " + totAlpha1);
+                        intMahasiswa[nama][2] = totAlpha1;
+                        break;
                     }
-                    break;
+                    // }
                 }
+                break;
+
             }
             System.out.print("Apakah ingin menambahkan lagi? (y/n) : ");
             answer = sc.next().charAt(0);
@@ -771,52 +820,52 @@ public class lamanawal {
             } else {
                 break;
             }
-        }  while (answer == 'Y' || answer == 'y');  
+        } while (answer == 'Y' || answer == 'y');
     }
 
-    static void pembayaran(int totAlphaKompen) {
-        do {
-            
-            int jmlYangDikerjakan;
-            String konfirmasi;
-            System.out.printf("----------------------------------------------------------------\n");
-            System.out.print("Apakah anda ingin membayar kompen? (y/t) : ");
-            konfirmasi = sc.next();
-            System.out.printf("----------------------------------------------------------------\n");
+    static int pembayaran(int totAlphaKompen, int MhsValidasi) {
+        // do {
+        Scanner sc = new Scanner(System.in);
+        int jmlYangDikerjakan;
+        String konfirmasi;
+        System.out.printf("----------------------------------------------------------------\n");
+        System.out.print("Apakah Mahasiswa sudah membayar kompen? (y/t) : ");
+        konfirmasi = sc.next();
+        System.out.printf("----------------------------------------------------------------\n");
 
-            if (konfirmasi.equalsIgnoreCase("y")) {
-                System.out.print("Masukkan jumlah kompen yang telah anda kerjakan : ");
-                jmlYangDikerjakan = sc.nextInt();
+        if (konfirmasi.equalsIgnoreCase("y")) {
+            System.out.print("Masukkan jumlah kompen yang telah dikerjakan : ");
+            jmlYangDikerjakan = sc.nextInt();
 
-                if (jmlYangDikerjakan <= totAlphaKompen) {
-                    totAlphaKompen -= jmlYangDikerjakan;
-                    System.out.printf("----------------------------------------------------------------\n");
-                    System.out.print("Sisa total kompen anda adalah : " + totAlphaKompen + "\n");
-                } else {
-                    System.out.printf("----------------------------------------------------------------\n");
-                    System.out.print("Sisa total kompen anda adalah : " + totAlphaKompen + "\n");
-                }
-            } else if (konfirmasi.equalsIgnoreCase("t")) {
-                System.out.print("Sisa total kompen anda adalah : " + totAlphaKompen + "\n");
-                System.out.println();
+            if (jmlYangDikerjakan <= totAlphaKompen) {
+                totAlphaKompen -= jmlYangDikerjakan;
                 System.out.printf("----------------------------------------------------------------\n");
-                System.out.println("Jangan lupa untuk membayar sisa kompen anda!");
-                break;
+                System.out.print("Sisa total kompen adalah : " + totAlphaKompen + "\n");
+                intMahasiswa[MhsValidasi][3] = 2;
+                strMahasiswa[MhsValidasi][4] = "-";
+            } else {
+                System.out.printf("----------------------------------------------------------------\n");
+                System.out.print("Sisa total kompen adalah : " + totAlphaKompen + "\n");
             }
+        } else if (konfirmasi.equalsIgnoreCase("t")) {
+            System.out.print("Sisa total kompen adalah : " + totAlphaKompen + "\n");
+            System.out.println();
+            System.out.printf("----------------------------------------------------------------\n");
+            
         }
-        
-        while (totAlphaKompen > 0);
+       
         if (totAlphaKompen == 0) {
             System.out.printf("----------------------------------------------------------------\n");
             System.out.println("Terimakasih Telah Membayar Kompen!");
             System.out.printf("----------------------------------------------------------------\n");
         }
+        return totAlphaKompen;
     }
 
     static void listKompen() {
         boolean runList = true;
         do {
-        System.out.println("============================");
+            System.out.println("============================");
             System.out.println("===== Daftar Pekerjaan =====");
             System.out.println("============================\n");
             System.out.println("Pilih aksi \n");
@@ -867,16 +916,18 @@ public class lamanawal {
         outputListKompen();
         int pilihKompen, pilihHari;
 
-        System.out.print("Pilih Hari Pekerjaan : ");
+        System.out.print("Pilih Hari Pekerjaan     : ");
         pilihHari = sc.nextInt();
-        System.out.print("Pilih Nomor Pekerjaan : ");
+        System.out.print("Pilih Nomor Pekerjaan    : ");
         pilihKompen = sc.nextInt();
 
         int kompenYgDipilih = pilihKompen - 1;
         int hariYgDipilih = pilihHari - 1;
-        System.out.println("\nPekerjaan yang dipilih \t\t\t\t: " + listKompen[kompenYgDipilih][hariYgDipilih] + "\n");
+        System.out.println("\nPekerjaan yang dipilih : " + listKompen[hariYgDipilih][kompenYgDipilih] + "\n");
+        intMahasiswa[noMhs][3] = 1;
+        strMahasiswa[noMhs][4] = listKompen[hariYgDipilih][kompenYgDipilih];
     }
-    
+
     static void outputListKompen() {
 
         String hari[] = { "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu" };
@@ -893,51 +944,34 @@ public class lamanawal {
             System.out.println();
         }
     }
-    
-    
+
     static void Validasi() {
 
         tampilDataMahasiswa();
 
         int pilihValidasi;
 
-        System.out.print("Pilih Mahasiswa: ");
+        System.out.print("Pilih Mahasiswa (angka) : ");
         pilihValidasi = sc.nextInt();
 
         int validasiMahasiswa = pilihValidasi - 1;
 
-        System.out.println("\nNama mahasiswa \t\t\t\t: " + strMahasiswa[validasiMahasiswa][0] + "\n");
+        System.out.println("\nNama mahasiswa \t\t: " + strMahasiswa[validasiMahasiswa][0] + "\n");
 
-        System.out.println("Status kompen \t\t\t\t: ");
-        System.out.println("1. Ada");
-        System.out.println("2. Tidak ada");
-        System.out.print("Pilih (1/2) \t\t\t\t: ");
-        intMahasiswa[validasiMahasiswa][3] = sc.nextInt();
-        sc.nextLine();
-        if (intMahasiswa[validasiMahasiswa][3] == 1) {
-            outputListKompen();
-            System.out.println("\nPekerjaan yang dikerjakan \t\t ");
+        if (intMahasiswa[validasiMahasiswa][3] == 2 && strMahasiswa[validasiMahasiswa][4].equalsIgnoreCase("-")) {
 
-            System.out.print("Pilih hari: ");
-            System.out.println();
-            byte pilihHariKerja = sc.nextByte();
-            System.out.print("Pilih pekerjaan: ");
-            byte pilihKerja = sc.nextByte();
-            System.out.println();
-
-            strMahasiswa[validasiMahasiswa][4] = listKompen[pilihHariKerja - 1][pilihKerja - 1];
+            System.out.println("Mahasiswa belum memilih pekerjaan");
         } else {
-            strMahasiswa[validasiMahasiswa][4] = "-";
+            System.out.print("\nApakah anda yakin untuk melakukan validasi? (y/t): ");
+            String StrValidasi = sc.next();
+
+            if (StrValidasi.equalsIgnoreCase("y")) {
+                int proses = pembayaran(intMahasiswa[validasiMahasiswa][2], validasiMahasiswa);
+
+                intMahasiswa[validasiMahasiswa][2] = proses;
+
+            }
         }
-
-        System.out.println("===== Berhasil Memvalidasi =====");
-        System.out.println("================================\n");
-
-        System.out.println("Nama \t\t\t\t= " + strMahasiswa[validasiMahasiswa][0]);
-        String statusValidasi = intMahasiswa[validasiMahasiswa][3] == 1 ? "Ada" : "Tidak ada";
-
-        System.out.println("Status kompen \t\t\t= " + statusValidasi);
-        System.out.println("Pekerjaan yang dikerjkan \t= " + strMahasiswa[validasiMahasiswa][4]);
     }
 
     static void Peraturan() {
@@ -989,7 +1023,7 @@ public class lamanawal {
 
     static void tambahPeraturan() {
         char tambah = 'y';
-        
+
         do {
             for (int i = 0; i < maxPeraturan; i++) {
                 System.out.print("Masukkan Peraturan : ");
@@ -1106,17 +1140,18 @@ public class lamanawal {
         intMahasiswa[2][1] = 0; // alpha
         intMahasiswa[2][3] = 1; // validasi
         strMahasiswa[2][4] = "tes"; // pekerjaan siswa
-        intMahasiswa[2][4] = 0; // Point Pelanggaran
+        intMahasiswa[2][4] = 2; // Point Pelanggaran
 
         // Contoh data 4
         strMahasiswa[3][0] = "Muhammad Rafi Rajendra"; // nama
         strMahasiswa[3][1] = "TI-1H"; // kelas
         strMahasiswa[3][2] = "2341652391"; // nim
         strMahasiswa[3][3] = "085475325749"; // no telp
-        intMahasiswa[3][1] = 0;// alpha
+        intMahasiswa[3][1] = 3;// alpha
+        intMahasiswa[3][2] = 3;// jam kompen
         intMahasiswa[3][3] = 1; // validasi
-        strMahasiswa[3][4] = "tes"; // pekerjaan siswa
-        intMahasiswa[3][4] = 0; // Point Pelanggaran
+        strMahasiswa[3][4] = "Print kertas"; // pekerjaan siswa
+        intMahasiswa[3][4] = 4; // Point Pelanggaran
 
         // Contoh data 5
         strMahasiswa[4][0] = "Lutfiyyah Adzka"; // nama
@@ -1128,9 +1163,9 @@ public class lamanawal {
         strMahasiswa[4][4] = "tes"; // pekerjaan siswa
         intMahasiswa[4][4] = 0; // Point Pelanggaran
 
-        // Contoh List peraturan dan pointnya 
-        listPeraturan[0]="Alpha > 48 jam";
-        poinPelanggaran[0]=4;
+        // Contoh List peraturan dan pointnya
+        listPeraturan[0] = "Alpha > 48 jam";
+        poinPelanggaran[0] = 4;
 
         char plh;
         int numUsers = 0; // Untuk melacak jumlah pengguna yang sudah diregistrasi
@@ -1160,7 +1195,6 @@ public class lamanawal {
                     break;
             }
 
-            
         } while (kembali);
     }
 }
